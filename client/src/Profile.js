@@ -53,5 +53,5 @@ class Profile extends React.Component {
 
   }
 };
-
+console.log("nothing")
 export default withServices(Profile);
