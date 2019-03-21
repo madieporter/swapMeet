@@ -14,6 +14,7 @@ serviceRoute.route('/')
         .post((req, res) => {
             if(Object.keys(req.body).length > 0){
                 const newService = new Service(req.body);
+                newService.user = req.user._id;
                 newService.save(err => {
                     if(err) return res.status(500).send(err)
                     return res.status(200).send(newService);
