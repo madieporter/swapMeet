@@ -16,10 +16,20 @@ const userSchema = new Schema({
     },
     service: [
         {
-            type:String,
+            businessName: String,
+            serviceName: String,
+            serviceDescription: String,
+            minCost:{
+                type: Number,
+                default: 0
+            },
+            maxCost:{
+                type: Number,
+                default: 0
+            }        
         }
     ],
-    phoneNumber: String,
+    phoneNumber: Number,
     email: String,
     location: String,
     swapBucks: {
