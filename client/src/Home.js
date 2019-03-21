@@ -1,5 +1,6 @@
 import React , { Component } from "react";
 import { withServices } from "./ServiceProvider";
+import DisplayServices from "./DisplayServices";
 
 
 class Home extends Component {
@@ -8,8 +9,13 @@ class Home extends Component {
 
         this.state = {
             input: "",
-            filteredBeers: []
+            message: false,
+            filteredServices: []
         }
+    }
+
+    componentDidMount() {
+        this.props.getServices()
     }
 
     handleChange = e => {
@@ -18,21 +24,48 @@ class Home extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        //SET UP FILTER HERE
+        let input = this.state.input.toUpperCase()
+        const filteredServices = this.props.services.filter(service => {
+            for(let k in service) {
+                if(service[k].toString().toUpperCase().search(input) === 0) {
+                    return true
+                }
+            }
+            const swappers = service.swapper[0]
+            for(let k in swappers){
+                if (swappers[k].toString().toUpperCase().search(input) === 0) {
+                    return true
+                }
+            }
+        })
+        if(filteredServices.length > 0) {
+            this.setState({ filteredServices, message: false })
+        } else {
+            this.setState({ filteredServices, message: true })
+        }
+        return filteredServices
     }
 
+    
+    
 
     render() {
+        
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text"
                     placeholder="Search Swappers"
-                    name="searchSwappers"
+                    name="input"
                     value={this.state.name}
                     onChange={this.handleChange}/><br></br>
                     <button>SEARCH</button>
                 </form>
+                { this.state.message ? 
+                    <div>Sorry, nothing matches your search.</div> 
+                :
+                    this.state.filteredServices.map((result, i) => <DisplayServices key={i} result={result} />)
+                }
             </div>
         )
     }
