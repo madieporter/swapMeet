@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
 const port = 5000;
 const mongoose = require('mongoose');
-require('dotenv').config();
 const expressJwt = require('express-jwt')
 
 app.use(express.json());
 app.use('/api', expressJwt({secret: process.env.SECRET}))
 
-app.use('/api/services', require('./routes/serviceRoutes'))
+app.use('/services', require('./routes/serviceRoutes'))
 app.use('/auth', require('./routes/authRoutes'))
 
 app.use((err, req, res, next) => {
