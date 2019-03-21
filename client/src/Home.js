@@ -50,10 +50,9 @@ class Home extends Component {
     
 
     render() {
-        
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form className='here' onSubmit={this.handleSubmit}>
                     <input type="text"
                     placeholder="Search Swappers"
                     name="input"
