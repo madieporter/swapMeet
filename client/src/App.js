@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from "react-router-dom";
 
+import SideDrawer from "./SideDrawer.js";
+import Backdrop from "./Backdrop.js"
 import './App.css';
 
 import NavBar from "./NavBar";
@@ -15,10 +17,36 @@ import Wellness from "./Wellness";
 
 
 class App extends Component {
+   constructor() {
+    super() 
+
+    this.state = {
+        sideDrawerOpen: false
+    }
+  }
+
+  drawerToggleClickHandler = () => {
+     this.setState((prevState) => {
+       return {sideDrawerOpen: !prevState.sideDrawerOpen};
+     });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false});
+  };
+
   render() {
+    let backdrop;
+
+    if (this.state.sideDrawerOpen) {
+      backdrop = <Backdrop click={this.backdropClickHandler} />
+    }
+
     return (
-      <div>
-        <NavBar />
+      <div style={{height: "100%"}}>
+        <NavBar drawerClickHandler={this.drawerToggleClickHandler}/>
+        <SideDrawer show={this.state.sideDrawerOpen} />
+        {backdrop}
 
        <Switch>
           <Route exact path = "/" component={Home}/>
