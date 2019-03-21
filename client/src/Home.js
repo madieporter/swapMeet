@@ -1,6 +1,7 @@
 import React , { Component } from "react";
 import { withServices } from "./ServiceProvider";
 import DisplayServices from "./DisplayServices";
+console.log('hola')
 
 
 class Home extends Component {

@@ -14,19 +14,11 @@ const userSchema = new Schema({
         required: true,
         type: String
     },
-    service: [
+    services: [
         {
-            businessName: String,
-            serviceName: String,
-            serviceDescription: String,
-            minCost:{
-                type: Number,
-                default: 0
-            },
-            maxCost:{
-                type: Number,
-                default: 0
-            }        
+            type: [Schema.Types.ObjectId],
+            ref: "Service",
+            default: []        
         }
     ],
     phoneNumber: Number,
