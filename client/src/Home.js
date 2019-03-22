@@ -1,7 +1,9 @@
 import React , { Component } from "react";
 import { withServices } from "./ServiceProvider";
 import DisplayServices from "./DisplayServices";
-import Profile from './Profile'
+// import Profile from './Profile'
+import { Link } from 'react-router-dom';
+// import Auto from './Auto'
 
 
 class Home extends Component {
@@ -25,6 +27,7 @@ class Home extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
+        console.log(this.props.services)
         let input = this.state.input.toUpperCase()
         const filteredServices = this.props.services.filter(service => {
             console.log(service)
@@ -33,7 +36,7 @@ class Home extends Component {
                     return true
                 }
             }
-            const swappers = service.swapper[0]
+            const swappers = service.swapper
             for(let k in swappers){
                 if (swappers[k].toString().toUpperCase().search(input) === 0) {
                     return true

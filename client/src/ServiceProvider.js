@@ -51,7 +51,7 @@ class ServiceProvider extends Component {
 
     getServices = () => {
         axios.get("/services").then(response => {
-            console.log(response.data)
+            // console.log(response.data)
             this.setState({
                 services: response.data
             })
