@@ -1,12 +1,23 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
 const port = 5000;
 const mongoose = require('mongoose');
+const expressJwt = require('express-jwt')
 
 app.use(express.json());
+app.use('/api', expressJwt({secret: process.env.SECRET}))
 
-app.use('/users', require('./routes/userRoutes'))
 app.use('/services', require('./routes/serviceRoutes'))
+app.use('/auth', require('./routes/authRoutes'))
+
+app.use((err, req, res, next) => {
+    console.error(err)
+    if(err.name === 'UnauthorizedError'){
+        res.status(err.status)
+    }
+    return res.send({message: err.message })
+})
 
 mongoose.connect('mongodb://localhost:27017/users', {useNewUrlParser: true}).then(() => {
     console.log('Connected to MongoDB')

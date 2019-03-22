@@ -5,6 +5,7 @@ import SideDrawer from "./SideDrawer.js";
 import Backdrop from "./Backdrop.js"
 import './App.css';
 import Home from './Home'
+import Profile from './Profile'
 
 import NavBar from "./NavBar";
 import Home from "./Home.js";
@@ -44,16 +45,11 @@ class App extends Component {
     }
 
     return (
-<<<<<<< HEAD
       <div style={{height: "100%"}}>
         <NavBar drawerClickHandler={this.drawerToggleClickHandler}/>
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
-=======
-      <div>
-        <Home />
-       <Switch>
->>>>>>> master
+
 
        <Switch>
           <Route exact path = "/" component={Home}/>

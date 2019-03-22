@@ -1,23 +1,23 @@
-import React from 'react';
-import Profile from './Profile'
-
 import React, { Component } from 'react'
+import Profile from './Profile'
+import { withRouter } from 'react-router-dom'
+import {withServices} from './ServiceProvider'
 
-export default class DisplayServices extends Component {
-  constructor() {
-    super()
-
+class DisplayServices extends Component {
+  componentDidMount(){
+    this.props.getServices()
   }
 
-  //function to go to profile. send results to function
-  // () => {<Profile result={this.props.result}
-  //
+  toProfile = () => {
+    this.props.history.push(`/profile/${this.props.result._id}`)
+  }
+
   render() {
-    let { minCost, maxCost, service, serviceType } = props.result
-    let { firstName, lastName, businessName, city, state } = props.result.swapper[0]
-    let result = props.result
+    let { minCost, maxCost, service, serviceType } = this.props.result
+    let { firstName, lastName, businessName, city, state } = this.props.result.swapper
+    let result = this.props.result
     return (
-      <div onClick={}>
+      <div onClick={this.toProfile} style={{border: "5px black solid"}}>
       <div>{serviceType}</div>
       <div>{service}</div>
       <div>{firstName} {lastName}</div>
@@ -30,9 +30,9 @@ export default class DisplayServices extends Component {
 }
 
 
-// sunny
-// every prop in its own div (except f/l name, cost)
+export default withRouter(withServices(DisplayServices));
+
 // profile comp shows everything (except id, v)
-// on click on parent div, set props in thing
+// on click on parent div, set props in function
 
 // img service type ternary
