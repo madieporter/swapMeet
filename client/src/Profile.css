@@ -1,0 +1,47 @@
+.profileContainer {
+    background-color: #CC3800;
+    margin-top: 9%;
+    text-align: center;
+    font-family: 'Poiret One', cursive;
+}
+
+.profileSwapperName {
+    font-family: 'Pacifico', cursive;
+    color: white;
+    font-size: 70px;
+    margin-top: 8px;
+}
+
+.profileBisName {
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.profileService {
+    font-size: 26px;
+    line-height: 200%;
+}
+
+.profilePriceRange {
+    font-size: 20px;
+    line-height: 200%;
+}
+
+.profileDescription {
+    background-image: url("https://images.pexels.com/photos/305827/pexels-photo-305827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    width: 510px;
+    height: 350px;
+    padding: 3%;
+    margin-left: 30%;
+    margin-right: 30%;
+    color: white;
+    font-size: 24px;
+    border-radius: 13%;
+    text-shadow: 2px 2px 2px black; 
+}
+
+.profileLocation,
+.profilePhoneNumber,
+.profileEmail {
+    font-size: 18px;
+}

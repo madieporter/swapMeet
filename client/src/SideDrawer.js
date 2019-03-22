@@ -3,6 +3,7 @@ import "./SideDrawer.css";
 
 import { Link } from "react-router-dom";
 
+
 const SideDrawer = (props) => {
 
     let drawerClasses = "sideDrawer";
@@ -12,13 +13,13 @@ const SideDrawer = (props) => {
 
     return  (
         <div className={drawerClasses}>
-            <ul><Link to="/">Home</Link></ul>
-            <ul><Link to="/auto">Auto</Link></ul>
-            <ul><Link to="/crafts">Crafts</Link></ul>
-            <ul><Link to="/education">Education</Link></ul>
-            <ul><Link to="/events">Event Coordination</Link></ul>
-            <ul><Link to="/residentialandcommercial">Residental and Commercial</Link></ul>
-            <ul><Link to="/wellness">Wellness</Link></ul>
+            <ul><Link to="/">home</Link></ul>
+            <ul><Link to="/auto">auto</Link></ul>
+            <ul><Link to="/crafts">crafts</Link></ul>
+            <ul><Link to="/education">education</Link></ul>
+            <ul><Link to="/events">event planning</Link></ul>
+            <ul><Link to="/residentialandcommercial">residential & commercial</Link></ul>
+            <ul><Link to="/wellness">wellness</Link></ul>
         </div>
     )
 }

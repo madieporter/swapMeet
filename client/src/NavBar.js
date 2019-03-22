@@ -1,23 +1,19 @@
 import React from "react";
 import DrawerToggleButton from "./DrawerToggleButton.js";
 
+import swapmeetLogo from "./images/swapmeetLogo.png";
+import login from "./images/login.png";
 
 const NavBar = (props) => {
 
     return (
-        <div>
-            <header className="navBar ">
+            <div>
                 <nav className="navigation">
-                    <div>
-                        <DrawerToggleButton click={props.drawerClickHandler} />
-                    </div>
-                    <div className="navItems"> 
-                       
-                    </div> 
+                    <DrawerToggleButton click={props.drawerClickHandler} />
+                    <img className="logo" src={swapmeetLogo} alt=""/>
+                    <img className="navItems" src={login} alt=""/>
                 </nav>
-            </header>
-            
-        </div>
+            </div>
     )
 } 
 
