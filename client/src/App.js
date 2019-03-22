@@ -3,12 +3,14 @@ import { Switch, Route } from "react-router-dom";
 
 import SideDrawer from "./SideDrawer.js";
 import Backdrop from "./Backdrop.js"
+
+
 import './App.css';
 import Profile from './Profile'
 import Login from './Login'
 import UserProfile from './UserProfile'
 
-import NavBar from "./NavBar";
+import NavBar from "./NavBar.js";
 import Home from "./Home.js";
 import Auto from "./Auto.js";
 import Crafts from "./Crafts.js";
@@ -16,7 +18,7 @@ import Education from "./Education";
 import Events from "./Events";
 import ResidentialandCommercial from "./ResidentialAndCommercial";
 import Wellness from "./Wellness";
-
+import Profile from './Profile.js';
 
 
 class App extends Component {
@@ -46,12 +48,10 @@ class App extends Component {
     }
 
     return (
-
       <div style={{height: "100%"}}>
         <NavBar drawerClickHandler={this.drawerToggleClickHandler}/>
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
-
 
        <Switch>
           <Route exact path = "/" component={Home}/>
