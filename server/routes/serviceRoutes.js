@@ -9,7 +9,6 @@ serviceRoute.route('/')
                 if (err) return res.status(500).send(err)
                 return res.status(200).send(services)
             })
-            console.log('hey')
         })
 
         .post((req, res) => {
