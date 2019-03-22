@@ -9,7 +9,6 @@ serviceRoute.route('/')
                 if (err) return res.status(500).send(err)
                 return res.status(200).send(services)
             })
-            console.log('hey')
         })
 
         .post((req, res) => {
@@ -42,8 +41,8 @@ serviceRoute.route('/:_id')
 
             .delete((req, res) => {
                 const {_id} = req.params;
-                Service.findByIdAndDelete(
-                    {_id},
+                Service.findOneAndDelete(
+                    {_id: _id},
                     req.body,
                     (err, service) => {
                         if(err) return res.status(500).send(err)
@@ -54,8 +53,8 @@ serviceRoute.route('/:_id')
 
             .put((req, res) => {
                 const {_id} = req.params;
-                Service.findByIdAndUpdate(
-                    {_id},
+                Service.findOneAndUpdate(
+                    {_id: _id},
                     req.body,
                     (err, service) => {
                         if(err) return res.status(500).send(err)

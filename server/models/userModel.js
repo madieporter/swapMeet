@@ -23,7 +23,8 @@ const userSchema = new Schema({
     ],
     phoneNumber: Number,
     email: String,
-    location: String,
+    city: String,
+    state: String,
     swapBucks: {
         type: Number,
         default: 0
