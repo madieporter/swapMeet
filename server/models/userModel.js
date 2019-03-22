@@ -14,12 +14,14 @@ const userSchema = new Schema({
         required: true,
         type: String
     },
-    service: [
+    services: [
         {
-            type:String,
+            type: [Schema.Types.ObjectId],
+            ref: "Service",
+            default: []        
         }
     ],
-    phoneNumber: String,
+    phoneNumber: Number,
     email: String,
     location: String,
     swapBucks: {

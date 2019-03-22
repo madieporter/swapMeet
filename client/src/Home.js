@@ -1,6 +1,7 @@
 import React , { Component } from "react";
 import { withServices } from "./ServiceProvider";
 import DisplayServices from "./DisplayServices";
+import Profile from './Profile'
 
 import "./App.css";
 
@@ -28,6 +29,7 @@ class Home extends Component {
         e.preventDefault()
         let input = this.state.input.toUpperCase()
         const filteredServices = this.props.services.filter(service => {
+            console.log(service)
             for(let k in service) {
                 if(service[k].toString().toUpperCase().search(input) === 0) {
                     return true

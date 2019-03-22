@@ -20,17 +20,13 @@ const serviceSchema = new Schema ({
         default: 0,
         required: true
     },
-    swapper: [{
-        firstName: String,
-        lastName: String,
-        businessName: String,
-        serviceName: String,
-        serviceDescription: String,
-        phoneNumber: Number,
-        email: String,
-        city: String,
-        state: String
-    }]
+    swappers: [
+        {
+            type: [Schema.Types.ObjectId],
+            ref: "User",
+            default: []        
+        }
+    ],
 })
 
 module.exports = mongoose.model('Service', serviceSchema)
