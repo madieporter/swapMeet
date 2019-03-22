@@ -1,6 +1,6 @@
 .sideDrawer {
     height: 100%;
-    background: grey;
+    background-image: url("https://images.pexels.com/photos/129733/pexels-photo-129733.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
@@ -24,14 +24,12 @@
     justify-content: center;
 }
 
-.side-drawer li {
-    margin: .5rem 0;
-}
-
 .sideDrawer a {
-    color: black;
+    color: #000000d9;
     text-decoration: none;
-    font-size: 24px;
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Poiret One', cursive;
 }
 
 .sideDrawer a:hover,

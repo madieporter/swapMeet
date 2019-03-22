@@ -1,6 +1,5 @@
 import React from "react";
 import "./DrawerToggleButton.css";
-import { PromiseProvider } from "mongoose";
 
 const DrawerToggleButton = (props) => {
 

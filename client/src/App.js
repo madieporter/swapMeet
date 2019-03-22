@@ -3,10 +3,11 @@ import { Switch, Route } from "react-router-dom";
 
 import SideDrawer from "./SideDrawer.js";
 import Backdrop from "./Backdrop.js"
+
+
 import './App.css';
 
-
-import NavBar from "./NavBar";
+import NavBar from "./NavBar.js";
 import Home from "./Home.js";
 import Auto from "./Auto.js";
 import Crafts from "./Crafts.js";
@@ -14,6 +15,7 @@ import Education from "./Education";
 import Events from "./Events";
 import ResidentialandCommercial from "./ResidentialAndCommercial";
 import Wellness from "./Wellness";
+import Profile from './Profile.js';
 
 
 
@@ -57,6 +59,7 @@ class App extends Component {
           <Route path="/events" component={Events}/>
           <Route path="/residentialandcommercial" component={ResidentialandCommercial}/>
           <Route path="/wellness" component={Wellness}/>
+          <Route exact path="/profile/:_id" component={Profile}/>
        </Switch>
       </div>
     );

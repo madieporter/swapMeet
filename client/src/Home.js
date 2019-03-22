@@ -2,6 +2,8 @@ import React , { Component } from "react";
 import { withServices } from "./ServiceProvider";
 import DisplayServices from "./DisplayServices";
 
+import "./App.css";
+
 
 class Home extends Component {
     constructor(props) {
@@ -31,7 +33,7 @@ class Home extends Component {
                     return true
                 }
             }
-            const swappers = service.swapper[0]
+            const swappers = service.swapper
             for(let k in swappers){
                 if (swappers[k].toString().toUpperCase().search(input) === 0) {
                     return true
@@ -50,16 +52,16 @@ class Home extends Component {
     
 
     render() {
-        
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text"
-                    placeholder="Search Swappers"
+            <div className="formImg">
+                <form className='here' onSubmit={this.handleSubmit}>
+                    <input className="homeSearchBar"
+                    type="text"
+                    placeholder="SEARCH SWAPPERS"
                     name="input"
                     value={this.state.name}
                     onChange={this.handleChange}/><br></br>
-                    <button>SEARCH</button>
+                    <button className="homeSearchButton">SEARCH</button>
                 </form>
                 { this.state.message ? 
                     <div>Sorry, nothing matches your search.</div> 
