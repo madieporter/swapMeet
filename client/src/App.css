@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-image: url("https://images.pexels.com/photos/691710/pexels-photo-691710.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-image: url("https://images.pexels.com/photos/1090972/pexels-photo-1090972.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -16,9 +16,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: #f9f9f9f2;
+  background-color: #f9f9f9e8;
   width: 100%;
-  font-family: 'Lobster', cursive;
 }
 
 .logo {
@@ -39,10 +38,6 @@ body {
   color: white;
 
 }
-.formImg {
-  
-}
-
 
 .here {
   display: flex;
@@ -70,3 +65,4 @@ body {
   font-size: 15px;
   color: white;
 }
+

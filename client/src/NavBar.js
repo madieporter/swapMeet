@@ -10,8 +10,8 @@ const NavBar = (props) => {
             <div>
                 <nav className="navigation">
                     <DrawerToggleButton click={props.drawerClickHandler} />
-                    <img className="logo" src={swapmeetLogo}/>
-                    <img className="navItems" src={login} />
+                    <img className="logo" src={swapmeetLogo} alt=""/>
+                    <img className="navItems" src={login} alt=""/>
                 </nav>
             </div>
     )

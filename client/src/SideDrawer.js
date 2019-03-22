@@ -3,13 +3,6 @@ import "./SideDrawer.css";
 
 import { Link } from "react-router-dom";
 
-import home from "./images/home.png";
-import auto from "./images/auto.png";
-import crafts from "./images/crafts.png";
-import education from "./images/education.png";
-import events from "./images/events.png";
-import resAndComerc from "./images/resandcomerc.png";
-import wellness from "./images/wellness.png";
 
 const SideDrawer = (props) => {
 

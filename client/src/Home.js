@@ -4,6 +4,7 @@ import DisplayServices from "./DisplayServices";
 import Profile from './Profile'
 
 import "./App.css";
+import "./DisplayServices.css";
 
 
 class Home extends Component {
@@ -13,7 +14,8 @@ class Home extends Component {
         this.state = {
             input: "",
             message: false,
-            filteredServices: []
+            filteredServices: [],
+            searched: false
         }
     }
 
@@ -29,7 +31,6 @@ class Home extends Component {
         e.preventDefault()
         let input = this.state.input.toUpperCase()
         const filteredServices = this.props.services.filter(service => {
-            console.log(service)
             for(let k in service) {
                 if(service[k].toString().toUpperCase().search(input) === 0) {
                     return true
@@ -43,9 +44,9 @@ class Home extends Component {
             }
         })
         if(filteredServices.length > 0) {
-            this.setState({ filteredServices, message: false })
+            this.setState({ filteredServices, message: false, searched: true })
         } else {
-            this.setState({ filteredServices, message: true })
+            this.setState({ filteredServices, message: true, searched: true })
         }
         return filteredServices
     }
@@ -55,7 +56,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="formImg">
+            <div>
                 <form className='here' onSubmit={this.handleSubmit}>
                     <input className="homeSearchBar"
                     type="text"
@@ -65,10 +66,16 @@ class Home extends Component {
                     onChange={this.handleChange}/><br></br>
                     <button className="homeSearchButton">SEARCH</button>
                 </form>
-                { this.state.message ? 
-                    <div>Sorry, nothing matches your search.</div> 
+                {this.state.searched ?
+                    <div className="gridContainer">
+                        { this.state.message ? 
+                            <div>Sorry, nothing matches your search.</div> 
+                        :
+                            this.state.filteredServices.map((result, i) => <DisplayServices key={i} result={result} />)
+                        }
+                        </div>
                 :
-                    this.state.filteredServices.map((result, i) => <DisplayServices key={i} result={result} />)
+                    null
                 }
             </div>
         )

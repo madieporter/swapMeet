@@ -18,7 +18,6 @@ import Wellness from "./Wellness";
 import Profile from './Profile.js';
 
 
-
 class App extends Component {
    constructor() {
     super() 
