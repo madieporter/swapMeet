@@ -12,11 +12,11 @@ class Profile extends React.Component {
 
     return (
       <>
-        {/* {this.props.token && this.props.username === username} */}
+
+        <div>{businessName}</div>
         <div>{service}</div>
         <div>{serviceType}</div>
         <div>Cost Range: ${minCost} - ${maxCost}</div>
-        <div>{businessName}</div>
         <div>{city}, {state}</div>
         <div>{firstName} {lastName}</div>
         <div>{phoneNumber}</div>
