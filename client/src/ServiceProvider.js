@@ -13,12 +13,7 @@ class ServiceProvider extends Component {
         }
     }
 
-    componentDidMount() {
-        this.getServices()
-    }
-
     signup = (userInfo) => {
-        console.log('here')
         return axios.post("/auth/signup", userInfo)
             .then(response => {
                 const { user, token } = response.data
@@ -56,6 +51,7 @@ class ServiceProvider extends Component {
 
     getServices = () => {
         axios.get("/services").then(response => {
+            // console.log(response.data)
             this.setState({
                 services: response.data
             })

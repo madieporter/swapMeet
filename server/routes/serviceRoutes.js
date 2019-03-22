@@ -64,16 +64,16 @@ serviceRoute.route('/:_id')
             })
 
 
-            serviceRoute('/service/:userID', async(req, res, next) => {
-                try{
-                    const userResponse = await User.find({_id: req.params.userID})
-                    const servicesResponse = awaitService.find({_id: { $in: userResponse.services}})
-                    return res.status(200).send(servicesResponse)
-                }
-                catch(err){
-                    res.status(500)
-                    return next(err)
-                }
-            })
+            // serviceRoute('/service/:userID', async(req, res, next) => {
+            //     try{
+            //         const userResponse = await User.find({_id: req.params.userID})
+            //         const servicesResponse = awaitService.find({_id: { $in: userResponse.services}})
+            //         return res.status(200).send(servicesResponse)
+            //     }
+            //     catch(err){
+            //         res.status(500)
+            //         return next(err)
+            //     }
+            // })
 
 module.exports = (serviceRoute)
