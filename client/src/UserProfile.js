@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withServices} from './ServiceProvider'
-import EditButton from './Images/edit.png'
-import SaveButton from './Images/save.png'
+import EditButton from './images/edit.png'
+import SaveButton from './images/save.png'
 import Style from './UserProfile.css'
 
 
