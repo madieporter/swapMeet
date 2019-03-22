@@ -27,7 +27,7 @@ authRoute.post('/signup', (req, res, next) => {
 })
 
 authRoute.post('/login', (req, res, next) => {
-    User.findOne({username: req.body.usernametoLowerCase()}, (err, user) => {
+    User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {
         if(err) return next(err)
         if (!user || user.password !== req.body.password) {
             res.status(403);
@@ -38,5 +38,7 @@ authRoute.post('/login', (req, res, next) => {
         return res.send({token: token, user: user.toObject(), success: true})
     })
 })
+
+
 
 module.exports = authRoute

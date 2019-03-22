@@ -22,6 +22,11 @@ class Profile extends React.Component {
         <div>{phoneNumber}</div>
         <div>{email}</div>
         <div>{serviceDescription}</div>
+        {/* {this.props.token ?
+          this.props.swapBucks
+        :
+
+        } */}
       </>
     );
 
