@@ -33,7 +33,7 @@ class Home extends Component {
                     return true
                 }
             }
-            const swappers = service.swapper[0]
+            const swappers = service.swapper
             for(let k in swappers){
                 if (swappers[k].toString().toUpperCase().search(input) === 0) {
                     return true

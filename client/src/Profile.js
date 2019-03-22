@@ -12,7 +12,7 @@ class Profile extends React.Component {
 
     return (
       <>
-
+        {/* {this.props.token && this.props.username === username} */}
         <div>{service}</div>
         <div>{serviceType}</div>
         <div>Cost Range: ${minCost} - ${maxCost}</div>
@@ -22,6 +22,11 @@ class Profile extends React.Component {
         <div>{phoneNumber}</div>
         <div>{email}</div>
         <div>{serviceDescription}</div>
+        {/* {this.props.token ?
+          this.props.swapBucks
+        :
+
+        } */}
       </>
     );
 

@@ -4,12 +4,16 @@ require('dotenv').config();
 const port = 5000;
 const mongoose = require('mongoose');
 const expressJwt = require('express-jwt')
+const morgan = require('morgan')
 
+
+app.use(morgan('dev'))
 app.use(express.json());
 app.use('/api', expressJwt({secret: process.env.SECRET}))
+app.use('/api', require('./routes/apiRoutes'))
+app.use('/auth', require('./routes/authRoutes'))
 
 app.use('/services', require('./routes/serviceRoutes'))
-app.use('/auth', require('./routes/authRoutes'))
 
 app.use((err, req, res, next) => {
     console.error(err)

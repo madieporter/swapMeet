@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 const { Provider, Consumer } = React.createContext()
+const tokenAxios = axios.create()
+
+tokenAxios.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token')
+    config.headers.Authorization = `Bearer ${token}`
+    return config
+})
 
 class ServiceProvider extends Component {
     constructor() {
@@ -30,6 +37,7 @@ class ServiceProvider extends Component {
     login = (credentials) => {
         return axios.post('/auth/login', credentials).then(response => {
             const { token, user } = response.data
+            console.log(response.data)
             localStorage.setItem('token', token)
             localStorage.setItem('user', JSON.stringify(user))
             this.setState({
@@ -37,6 +45,13 @@ class ServiceProvider extends Component {
                 token
             })
             return response
+        })
+    }
+
+    editUser = (editedUser) => {
+        
+        return tokenAxios.put("/api/edituser", editedUser).then(response => {
+            return response;
         })
     }
 
@@ -51,12 +66,12 @@ class ServiceProvider extends Component {
 
     getServices = () => {
         axios.get("/services").then(response => {
-            console.log(response.data)
             this.setState({
                 services: response.data
             })
         })
     }
+    
 
     render() {
         return (
@@ -64,6 +79,7 @@ class ServiceProvider extends Component {
                 logout: this.logout,
                 login: this.login,
                 signup: this.signup,
+                editUser: this.editUser,
                 getServices: this.getServices,
                 ...this.state
             }}>
