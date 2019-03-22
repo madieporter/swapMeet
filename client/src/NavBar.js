@@ -1,14 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import DrawerToggleButton from "./DrawerToggleButton.js";
 
-const NavBar = () => {
+
+const NavBar = (props) => {
+
     return (
         <div>
-            <div>
-                <link />
-            </div>
+            <header className="navBar ">
+                <nav className="navigation">
+                    <div>
+                        <DrawerToggleButton click={props.drawerClickHandler} />
+                    </div>
+                    <div className="navItems"> 
+                       
+                    </div> 
+                </nav>
+            </header>
+            
         </div>
     )
-}
+} 
 
 export default NavBar;
