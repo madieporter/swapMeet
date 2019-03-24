@@ -45,16 +45,6 @@ class Profile extends React.Component {
         <div className="profilePhoneNumber">{phoneNumber}</div>
         <div className="profileEmail">{email}</div>
         
-
-        <div>{businessName}</div>
-        <div>{service}</div>
-        <div>{serviceType}</div>
-        <div>Cost Range: ${minCost} - ${maxCost}</div>
-        <div>{city}, {state}</div>
-        <div>{firstName} {lastName}</div>
-        <div>{phoneNumber}</div>
-        <div>{email}</div>
-        <div>{serviceDescription}</div>
         {/* {this.props.token ?
           this.props.swapBucks
         :
