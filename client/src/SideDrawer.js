@@ -13,7 +13,7 @@ const SideDrawer = (props) => {
 
     return  (
         <div className={drawerClasses}>
-            <ul><Link to="/">home</Link></ul>
+            <ul><Link to="/">home page</Link></ul>
             <ul><Link to="/auto">auto</Link></ul>
             <ul><Link to="/crafts">crafts</Link></ul>
             <ul><Link to="/education">education</Link></ul>

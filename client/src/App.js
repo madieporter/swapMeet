@@ -6,8 +6,6 @@ import Backdrop from "./Backdrop.js"
 
 
 import './App.css';
-import Home from './Home'
-import Profile from './Profile'
 import Login from './Login'
 import UserProfile from './UserProfile'
 

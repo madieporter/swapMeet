@@ -1,20 +1,38 @@
-import React from "react";
+import React, { Component } from 'react';
 import DrawerToggleButton from "./DrawerToggleButton.js";
+import {withServices} from './ServiceProvider'
+import { withRouter } from 'react-router-dom'
 
 import swapmeetLogo from "./images/swapmeetLogo.png";
-import login from "./images/login.png";
+import userIcon from "./images/login.png";
 
-const NavBar = (props) => {
 
-    return (
-            <div>
-                <nav className="navigation">
-                    <DrawerToggleButton click={props.drawerClickHandler} />
-                    <img className="logo" src={swapmeetLogo} alt=""/>
-                    <img className="navItems" src={login} alt=""/>
-                </nav>
-            </div>
-    )
-} 
+class NavBar extends Component {
+    constructor(props){
+        super(props)
+    }
+    toLogin = () => {
+        if(this.props.token){
+            this.props.history.push(`/userprofile/${this.props.user.username}`)
+        }else{
+            this.props.history.push(`/login`)
+        }
+    }
 
-export default NavBar;
+    toHome = () => {
+        this.props.history.push(`/`)
+    }
+
+    render() {
+        return (
+            <nav className="navigation">
+                <DrawerToggleButton click={this.props.drawerClickHandler} />
+                <img className="logo" onClick={this.toHome} src={swapmeetLogo} alt=""/>
+                <img className="navItems" onClick={ this.toLogin} src={userIcon} alt=""/>
+            </nav>
+        );
+    }
+}
+
+
+export default withRouter(withServices(NavBar));

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withServices} from './ServiceProvider'
-import EditButton from './Images/edit.png'
-import SaveButton from './Images/save.png'
+import EditButton from './images/edit.png'
+import SaveButton from './images/save.png'
 import Style from './UserProfile.css'
 
 
@@ -119,13 +119,11 @@ class UserProfile extends Component {
                     </form>
                 :
                     <>
-                        <div>{username}</div>
-                        <div>{swapBucks}</div>
-                        <img src={profileImage} alt=""/>
-                        <div>{firstName}</div>
-                        <div>{lastName}</div>
-                        <div>{city}</div>
-                        <div>{state}</div>
+                        <div>Username: {username}</div>
+                        <div>SwapBucks: {swapBucks}</div>
+                        <img  className='profileImage' src={profileImage} alt=""/>
+                        <div>Name: {firstName} {lastName}</div>
+                        <div>Location: {city}, {state}</div>
                         <div>{email}</div>
                         <div>{phoneNumber}</div>
                         <img className='editButton' onClick={this.toggleEdit} src={EditButton} alt=""/>
