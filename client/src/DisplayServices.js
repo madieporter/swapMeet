@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import {withServices} from './ServiceProvider'
 
-import Profile from './Profile'
 import "./DisplayServices.css";
 
 import Auto from "./images/auto.png";
@@ -60,7 +59,3 @@ class DisplayServices extends Component {
 
 export default withRouter(withServices(DisplayServices));
 
-// profile comp shows everything (except id, v)
-// on click on parent div, set props in function
-
-// img service type ternary

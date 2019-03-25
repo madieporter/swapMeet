@@ -46,7 +46,7 @@ class Profile extends React.Component {
         <div className="profileEmail">{email}</div>
         
 
-        <div>{businessName}</div>
+        {/* <div>{businessName}</div>
         <div>{service}</div>
         <div>{serviceType}</div>
         <div>Cost Range: ${minCost} - ${maxCost}</div>
@@ -54,7 +54,7 @@ class Profile extends React.Component {
         <div>{firstName} {lastName}</div>
         <div>{phoneNumber}</div>
         <div>{email}</div>
-        <div>{serviceDescription}</div>
+        <div>{serviceDescription}</div> */}
         {/* {this.props.token ?
           this.props.swapBucks
         :
