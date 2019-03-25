@@ -36,21 +36,23 @@ class Wellness extends React.Component {
 
 	render() {
 			return (
-				<div>
-					{this.state.filteredUsers ?
-						this.state.filteredUsers.map((result, i) => 
-						<div onClick={() => {this.toProfile(result._id)}} key={i} style={{border: "5px black solid"}}>
-							<div>{result.serviceType}</div>
-							<div>{result.service}</div>
-							<div>{result.firstName} {result.lastName}</div>
-							<div>${result.cost}</div>
-							<div>{result.businessName}</div>
-							<div>{result.city}, {result.state}</div>
-						</div>
-						)
-					:
-						<div>no results</div>
-					}
+				<div className="wellnessBody">
+					<div className="serviceTitle">wellness</div>
+					<div className="serviceContainer">
+						{this.state.filteredServices ?
+							this.state.filteredServices.map((result, i) => 
+							<div className="serviceCard" onClick={() => {this.toProfile(result._id)}} key={i}>
+								<div className="serviceBisName">{result.swapper.businessName}</div>
+								<div className="serviceSwapperName">{result.swapper.firstName} {result.swapper.lastName}</div>
+								<div className="serviceService">{result.service}</div>
+								<div className="serviceCost">${result.minCost} - ${result.maxCost}</div>
+								<div className="serviceLocation">{result.swapper.city}, {result.swapper.state}</div>
+							</div>
+							)
+						:
+							<div>no results</div>
+						}
+					</div>
 				</div>
 			)
 

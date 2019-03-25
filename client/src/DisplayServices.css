@@ -1,36 +1,69 @@
-.gridContainer {
-    background-color: #CC3800;
-    margin-top: 9%;
-    display: grid;   
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0.3%;
-    padding: 2%;
+@media (min-width: 856px) {
+    .gridContainer {
+        background-color: #e58910;
+        margin-top: 6%;
+        display: grid;   
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1.5%;
+        grid-row-gap: 1%;
+        padding: 2%;
+    }
+    
+    .searchCard {
+        background-color: #f9f9f9e8;
+        height: 350px;
+        border-radius: 5%;
+        text-align: center;
+        font-family: 'Quicksand', sans-serif;
+        line-height: 200%;
+    }
+    
+    .serviceType {
+        font-family: 'Pacifico', cursive;
+        font-size: 45px;
+        margin-top: 8px;
+    }
+    
+    .bisName {
+        font-size: 26px;
+        font-weight: 900;
+    }
+    
+    .swapperName {
+        font-size: 20px;
+    }
 }
 
-.searchCard {
-    background-color: #f9f9f9e8;
-    height: 350px;
-    border-radius: 5%;
-    text-align: center;
-    font-family: 'Poiret One', cursive;
-    line-height: 200%;
-    margin: 3%;
-    margin-bottom: 6%;
-}
-
-.serviceType {
-    font-family: 'Pacifico', cursive;
-    font-size: 33px;
-    margin-top: 8px;
-}
-
-.bisName {
-    font-size: 26px;
-    font-weight: 900;
-}
-
-.swapperName {
-    font-size: 20px;
+@media (max-width: 855px) {
+    .gridContainer {
+        background-color: #e58910;
+        margin-top: 6%;  
+        padding: 5%;
+    }
+    
+    .searchCard {
+        background-color: #f9f9f9e8;
+        height: 350px;
+        border-radius: 3%;
+        text-align: center;
+        font-family: 'Quicksand', sans-serif;
+        /* line-height: 200%; */
+    }
+    
+    .serviceType {
+        font-family: 'Pacifico', cursive;
+        font-size: 45px;
+        margin-top: 8px;
+    }
+    
+    .bisName {
+        font-size: 26px;
+        font-weight: 900;
+    }
+    
+    .swapperName {
+        font-size: 20px;
+    }
 }
 
 

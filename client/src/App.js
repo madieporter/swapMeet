@@ -28,6 +28,10 @@ class App extends Component {
     }
   }
 
+  // componentWillUnmount(){
+  //   console.log(window.location.href)
+  // }
+
   drawerToggleClickHandler = () => {
      this.setState((prevState) => {
        return {sideDrawerOpen: !prevState.sideDrawerOpen};
@@ -44,16 +48,16 @@ class App extends Component {
     if (this.state.sideDrawerOpen) {
       backdrop = <Backdrop click={this.backdropClickHandler} />
     }
-
+    
     return (
-      <div style={{height: "100%"}}>
+      <div>
         <NavBar drawerClickHandler={this.drawerToggleClickHandler}/>
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
 
        <Switch>
           <Route exact path = "/" component={Home}/>
-          <Route path="/auto" component={Auto}/>
+          <Route path="/auto" component={Auto} />
           <Route path="/crafts" component={Crafts}/>
           <Route path="/education" component={Education}/>
           <Route path="/events" component={Events}/>

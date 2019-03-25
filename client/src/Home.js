@@ -7,6 +7,10 @@ import DisplayServices from "./DisplayServices";
 import "./App.css";
 import "./DisplayServices.css";
 
+import sorry from "./images/sorry.png";
+import homeBack from "./images/homeBack.jpeg";
+
+
 
 class Home extends Component {
     constructor(props) {
@@ -59,22 +63,29 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className="homeBack">
                 <form className='here' onSubmit={this.handleSubmit}>
                     <input className="homeSearchBar"
                     type="text"
-                    placeholder="SEARCH SWAPPERS"
+                    placeholder="Search for Swappers"
                     name="input"
                     value={this.state.name}
                     onChange={this.handleChange}/><br></br>
                     <button className="homeSearchButton">SEARCH</button>
                 </form>
                 {this.state.searched ?
-                    <div className="gridContainer">
+                    <div>
                         { this.state.message ? 
-                            <div>Sorry, nothing matches your search.</div> 
+                            <div className="sorry">
+                                <div className="sorryMessage">
+                                    Sorry, nothing matches your search.
+                                </div>
+                                <img src={sorry} alt=""/>
+                            </div> 
                         :
-                            this.state.filteredUsers.map((result, i) => <DisplayServices key={i} result={result} />)
+                            <div className="gridContainer">
+                                {this.state.filteredServices.map((result, i) => <DisplayServices key={i} result={result} />)}
+                            </div>
                         }
                         </div>
                 :

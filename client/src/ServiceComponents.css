@@ -1,0 +1,199 @@
+@media (min-width: 1151px) {
+    .autoBody {
+        background-image: url("https://images.pexels.com/photos/1534609/pexels-photo-1534609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .craftsBody {
+        background-image: url("https://images.pexels.com/photos/243059/pexels-photo-243059.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .educationBody{
+        background-image: url("https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .eventsBody {
+        background-image: url("https://images.pexels.com/photos/796607/pexels-photo-796607.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .resAndComercBody {
+        background-image: url("https://images.pexels.com/photos/1598213/pexels-photo-1598213.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .wellnessBody {
+        background-image: url("https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .serviceTitle {
+        font-size: 150px;
+        color: white;
+        text-align: center;
+        font-family: 'Pacifico', cursive;
+    }
+    
+    .serviceContainer {
+        background-color: #e58910;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 0.3%;
+        padding: 5%;
+        margin-top: 150px;
+        font-family: 'Quicksand', sans-serif;
+    }
+    
+    .serviceCard {
+        background-color: #f9f9f9e8;
+        width: 260px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 6%;
+    }
+    
+    .serviceBisName {
+        font-family: 'Pacifico', cursive;
+        font-size: 34px;
+    }
+    
+    .serviceSwapperName {
+        font-size: 26px;
+        line-height: 200%;
+    }
+    
+    .serviceService {
+        font-size: 20px;
+        font-weight: 900;
+        line-height: 200%;
+    }
+    
+    .serviceCost {
+        line-height: 200%;
+    }
+    
+    .serviceLocation {
+        line-height: 200%;
+        font-weight: 900;
+    }
+}
+
+@media (max-width: 1150px) {
+    .autoBody {
+        background-image: url("https://images.pexels.com/photos/1534609/pexels-photo-1534609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .craftsBody {
+        background-image: url("https://images.pexels.com/photos/243059/pexels-photo-243059.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .educationBody{
+        background-image: url("https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .eventsBody {
+        background-image: url("https://images.pexels.com/photos/796607/pexels-photo-796607.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .resAndComercBody {
+        background-image: url("https://images.pexels.com/photos/1598213/pexels-photo-1598213.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .wellnessBody {
+        background-image: url("https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    
+    .serviceTitle {
+        font-size: 80px;
+        color: white;
+        text-align: center;
+        font-family: 'Pacifico', cursive;
+    }
+    
+    .serviceContainer {
+        background-color: #e58910;
+        display: grid;
+        justify-content: center;
+        grid-gap: 0.8%;
+        padding: 5%;
+        margin-top: 150px;
+        font-family: 'Quicksand', sans-serif;
+    }
+    
+    .serviceCard {
+        background-color: #f9f9f9e8;
+        width: 260px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 6%;
+    }
+    
+    .serviceBisName {
+        font-family: 'Pacifico', cursive;
+        font-size: 30px;
+    }
+    
+    .serviceSwapperName {
+        font-size: 26px;
+        line-height: 200%;
+    }
+    
+    .serviceService {
+        font-size: 20px;
+        font-weight: 900;
+        line-height: 200%;
+    }
+    
+    .serviceCost {
+        line-height: 200%;
+    }
+    
+    .serviceLocation {
+        line-height: 200%;
+        font-weight: 900;
+    }
+}
