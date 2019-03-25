@@ -6,32 +6,33 @@ class Crafts extends React.Component {
 		super()
 		this.state = {
 				message: false,
-				filteredServices: []
+				filteredUsers: [],
+				users: JSON.parse(localStorage.getItem('users')) || []
 		}
 	}
 	
 	toProfile = (_id) => {
-		this.props.history.push(`/profile/${_id}`)
+		this.props.history.push(`/userprofile/${_id}`)
 	}
 
 	componentDidMount() {
-		this.props.getServices()
-		console.log(this.props.services)
-		const filteredCrafts = this.props.services.filter(service => {
-			for(let k in service) {
-				if(service[k].toString().search("Crafts") === 0) {
+		const filteredCrafts = this.state.users.filter(user => {
+			console.log(user)
+			for(let k in user) {
+				if(user[k].toString().toLowerCase().search("crafts") === 0) {
 					return true
 				}
 			}
+			return filteredCrafts
 		})
 		if(filteredCrafts.length > 0) {
 			this.setState({
-				filteredServices: filteredCrafts
-			}, () => { console.log(this.state.filteredServices) }) 
+				filteredUsers: filteredCrafts
+			}, () => { console.log(this.state.filteredUsers) }) 
 		} else {
 			this.setState({
 				message: true
-			}, () => { console.log(this.state.filteredServices) })
+			}, () => { console.log(this.state.filteredUsers) })
 		}
 	}
 

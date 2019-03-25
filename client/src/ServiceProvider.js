@@ -14,7 +14,7 @@ class ServiceProvider extends Component {
         super()
 
         this.state = {
-            services: [],
+            users: [],
             user: JSON.parse(localStorage.getItem('user')) || {},
             token: localStorage.getItem('token') || ''
         }
@@ -64,11 +64,12 @@ class ServiceProvider extends Component {
         })
     }
 
-    getServices = () => {
-        axios.get("/services").then(response => {
+    getUsers = () => {
+        axios.get("/users").then(response => {
             this.setState({
-                services: response.data
+                users: response.data
             })
+            localStorage.setItem('users', JSON.stringify(response.data))
         })
     }
     
@@ -80,7 +81,7 @@ class ServiceProvider extends Component {
                 login: this.login,
                 signup: this.signup,
                 editUser: this.editUser,
-                getServices: this.getServices,
+                getUsers: this.getUsers,
                 ...this.state
             }}>
                 {this.props.children}

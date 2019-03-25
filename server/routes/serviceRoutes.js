@@ -1,6 +1,7 @@
 const express = require('express')
 const serviceRoute = express.Router()
 const Service = require('../models/serviceModel')
+const User = require('../models/userModel')
 
 serviceRoute.route('/')
 
@@ -62,6 +63,15 @@ serviceRoute.route('/:_id')
                     }
                 )
             })
+
+// Need to find all Users that have a specific service
+// /services/user/:serviceName
+
+serviceRoute.get("/user/:servicename", (req, res, next) => {
+    User.find({serviceName: req.param.serviceName.toLowerCase()}, (err, usersWithService) => {
+        
+    })
+})
 
 
             // serviceRoute('/service/:userID', async(req, res, next) => {

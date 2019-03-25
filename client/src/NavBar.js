@@ -1,5 +1,7 @@
-import React from "react";
+import React, { Component } from 'react';
 import DrawerToggleButton from "./DrawerToggleButton.js";
+import {withServices} from './ServiceProvider'
+import { withRouter } from 'react-router-dom'
 
 import swapmeetLogo from "./images/swapmeetLogo.png";
 import login from "./images/login.png";

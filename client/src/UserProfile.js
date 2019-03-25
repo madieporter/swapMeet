@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {withServices} from './ServiceProvider'
 import EditButton from './images/edit.png'
 import SaveButton from './images/save.png'
-import Style from './UserProfile.css'
+import './UserProfile.css'
 
 
 class UserProfile extends Component {
     constructor(){
         super()
         this.state = {
+            users: JSON.parse(localStorage.getItem('users')) || [],
             edit: false,
             _id: '',
             firstName: '',
@@ -19,11 +20,30 @@ class UserProfile extends Component {
             state: '',
             username: '',
             password: '',
-            profileImage: ''
+            profileImage: '',
+            cost: '',
+            service: '',
+            serviceType: '',
+            serviceDescription: '',
+            businessName: ''
         }
     }
 
     componentDidMount(){
+        console.log(this.props.match.params.username)
+        if (this.props.token && this.props.match.params.username === this.props.user.username){
+            let {firstName, lastName, profileImage, email, phoneNumber, city, state, username, password,_id} = this.props.user
+            this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, password,_id})
+        }else if(this.props.match.params.username){
+            const currentUser = this.state.users.find(user => user._id === this.props.match.params.username)
+            console.log(currentUser)
+            let { cost, service, serviceType, businessName, city, email, firstName, lastName, phoneNumber, username, serviceDescription, state, profileImage  } = currentUser
+            this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, cost, service, serviceType, businessName, serviceDescription})
+        }
+        
+    }
+
+    componentWillReceiveProps(nextProps){
         let {firstName, lastName, profileImage, email, phoneNumber, city, state, username, password,_id} = this.props.user
         this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, password,_id})
     }
@@ -56,7 +76,7 @@ class UserProfile extends Component {
     }
 
     render() {
-        let { firstName, lastName, username, city, state, email, phoneNumber, profileImage, swapBucks} = this.props.user
+        let { firstName, lastName, username, city, state, email, phoneNumber, profileImage, swapBucks} = this.state
         return (
             <div className='userProfileBackground'>
                 {this.state.edit ?
@@ -119,13 +139,11 @@ class UserProfile extends Component {
                     </form>
                 :
                     <>
-                        <div>{username}</div>
-                        <div>{swapBucks}</div>
-                        <img src={profileImage} alt=""/>
-                        <div>{firstName}</div>
-                        <div>{lastName}</div>
-                        <div>{city}</div>
-                        <div>{state}</div>
+                        <div>Username: {username}</div>
+                        <div>SwapBucks: {swapBucks}</div>
+                        <img  className='profileImage' src={profileImage} alt=""/>
+                        <div>Name: {firstName} {lastName}</div>
+                        <div>Location: {city}, {state}</div>
                         <div>{email}</div>
                         <div>{phoneNumber}</div>
                         <img className='editButton' onClick={this.toggleEdit} src={EditButton} alt=""/>

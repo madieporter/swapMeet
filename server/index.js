@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('/api', expressJwt({secret: process.env.SECRET}))
 app.use('/api', require('./routes/apiRoutes'))
 app.use('/auth', require('./routes/authRoutes'))
-
+app.use('/users', require('./routes/userRoutes'))
 app.use('/services', require('./routes/serviceRoutes'))
 
 app.use((err, req, res, next) => {

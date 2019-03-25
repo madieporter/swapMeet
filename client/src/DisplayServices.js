@@ -13,42 +13,41 @@ import Wellness from "./images/wellness.png";
 
 class DisplayServices extends Component {
   componentDidMount(){
-    this.props.getServices()
+    this.props.getUsers()
   }
 
   toProfile = () => {
-    this.props.history.push(`/profile/${this.props.result._id}`)
+    this.props.history.push(`/userprofile/${this.props.result._id}`)
   }
 
   render() {
-
-    let { minCost, maxCost, service, serviceType } = this.props.result
-    let { firstName, lastName, businessName, city, state } = this.props.result.swapper
-    let result = this.props.result;
+    console.log(this.props.result)
+    let { cost, service, serviceName } = this.props.result
+    let { firstName, lastName, businessName, city, state } = this.props.result
     let img = ''
-    if (serviceType === "auto") {
+    if (service === "auto") {
       img = Auto
-    } else if (serviceType === "Crafts") {
+    } else if (service === "Crafts") {
       img = Crafts
-    } else if (serviceType === "Education") {
+    } else if (service === "Education") {
       img = Education
-    } else if (serviceType === "Events") {
+    } else if (service === "Events") {
       img = Events
-    } else if (serviceType === "home") {
+    } else if (service === "home") {
       img = ResAndComerc
-    } else if (serviceType === "Wellness") {
+    } else if (service === "Wellness") {
       img = Wellness
     }
 
     return (
       <>
         <div className="searchCard" onClick={this.toProfile}>
-          <div className="serviceType">{serviceType}</div><br></br>
+          <div className="serviceType">{service}</div><br></br>
           <img src={img} alt=""/>
           <div className="bisName">{businessName}</div>
           <div className="swapperName">Swapper: {firstName} {lastName}</div>
-          <div className="specialty">Specialty: {service}</div>
-          <div className="price">Price Range: ${minCost} - ${maxCost}</div>
+          <div className="specialty">Specialty: {serviceName}</div>
+          <div className="price">Price: ${cost}</div>
           <div className="location">Location: {city}, {state}</div>
         </div>
       </>

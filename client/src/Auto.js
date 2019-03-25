@@ -8,32 +8,32 @@ class Auto extends React.Component {
 		super()
 		this.state = {
 				message: false,
-				filteredServices: []
+				filteredUsers: [],
+				users: JSON.parse(localStorage.getItem('users')) || []
 		}
 	}
 	
 	toProfile = (_id) => {
-		this.props.history.push(`/profile/${_id}`)
+		this.props.history.push(`/userprofile/${_id}`)
 	}
 
 	componentDidMount() {
-		this.props.getServices()
-		console.log(this.props.services)
-		const filteredAuto = this.props.services.filter(service => {
-			for(let k in service) {
-				if(service[k].toString().search("auto") === 0) {
+		const filteredAuto = this.state.users.filter(user => {
+			for(let k in user) {
+				if(user[k].toString().toLowerCase().search("auto") === 0) {
 					return true
 				}
 			}
+			return filteredAuto
 		})
 		if(filteredAuto.length > 0) {
 			this.setState({
-				filteredServices: filteredAuto
-			}, () => { console.log(this.state.filteredServices) }) 
+				filteredUsers: filteredAuto
+			}, () => { console.log(this.state.filteredUsers) }) 
 		} else {
 			this.setState({
 				message: true
-			}, () => { console.log(this.state.filteredServices) })
+			}, () => { console.log(this.state.filteredUsers) })
 		}
 	}
 
