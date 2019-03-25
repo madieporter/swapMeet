@@ -8,9 +8,7 @@ import userIcon from "./images/login.png";
 
 
 class NavBar extends Component {
-    constructor(props){
-        super(props)
-    }
+    
     toLogin = () => {
         if(this.props.token){
             this.props.history.push(`/userprofile/${this.props.user.username}`)

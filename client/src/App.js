@@ -17,7 +17,6 @@ import Education from "./Education";
 import Events from "./Events";
 import ResidentialandCommercial from "./ResidentialAndCommercial";
 import Wellness from "./Wellness";
-import Profile from './Profile.js';
 
 
 class App extends Component {
@@ -60,7 +59,6 @@ class App extends Component {
           <Route path="/events" component={Events}/>
           <Route path="/residentialandcommercial" component={ResidentialandCommercial}/>
           <Route path="/wellness" component={Wellness}/>
-          <Route path='/profile/:_id' component={Profile} />
           <Route path='/login' component={Login} />
           <Route path='/userprofile/:username' component={UserProfile} />
        </Switch>

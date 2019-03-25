@@ -24,7 +24,6 @@ class Login extends Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    // this.props.history.push(`/userprofile/${this.state.username}`)
 
     handleSubmit = e => {
         e.preventDefault()
