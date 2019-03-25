@@ -1,8 +1,7 @@
 import React , { Component } from "react";
 import { withServices } from "./ServiceProvider";
 import DisplayServices from "./DisplayServices";
-// import Profile from './Profile'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import Auto from './Auto'
 
 import "./App.css";
@@ -16,13 +15,13 @@ class Home extends Component {
         this.state = {
             input: "",
             message: false,
-            filteredServices: [],
+            filteredUsers: [],
             searched: false
         }
     }
 
     componentDidMount() {
-        this.props.getServices()
+        this.props.getUsers()
     }
 
     handleChange = e => {
@@ -31,27 +30,28 @@ class Home extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        console.log(this.props.services)
+        console.log(this.props.users)
         let input = this.state.input.toUpperCase()
-        const filteredServices = this.props.services.filter(service => {
-            for(let k in service) {
-                if(service[k].toString().toUpperCase().search(input) === 0) {
+        const filteredUsers = this.props.users.filter(user => {
+            for(let k in user) {
+                if(user[k].toString().toUpperCase().search(input) === 0) {
                     return true
                 }
             }
-            const swappers = service.swapper
+            const swappers = user.swapper
             for(let k in swappers){
                 if (swappers[k].toString().toUpperCase().search(input) === 0) {
                     return true
                 }
             }
+            return filteredUsers
         })
-        if(filteredServices.length > 0) {
-            this.setState({ filteredServices, message: false, searched: true })
+        if(filteredUsers.length > 0) {
+            this.setState({ filteredUsers, message: false, searched: true })
         } else {
-            this.setState({ filteredServices, message: true, searched: true })
+            this.setState({ filteredUsers, message: true, searched: true })
         }
-        return filteredServices
+        return filteredUsers
     }
 
     
@@ -74,7 +74,7 @@ class Home extends Component {
                         { this.state.message ? 
                             <div>Sorry, nothing matches your search.</div> 
                         :
-                            this.state.filteredServices.map((result, i) => <DisplayServices key={i} result={result} />)
+                            this.state.filteredUsers.map((result, i) => <DisplayServices key={i} result={result} />)
                         }
                         </div>
                 :

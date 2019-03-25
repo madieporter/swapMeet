@@ -6,47 +6,47 @@ class Events extends React.Component {
 		super()
 		this.state = {
 				message: false,
-				filteredServices: []
+				filteredUsers: [],
+				users: JSON.parse(localStorage.getItem('users')) || []
 		}
 	}
 	
 	toProfile = (_id) => {
-		this.props.history.push(`/profile/${_id}`)
+		this.props.history.push(`/userprofile/${_id}`)
 	}
 
 	componentDidMount() {
-		this.props.getServices()
-		console.log(this.props.services)
-		const filteredEvents = this.props.services.filter(service => {
-			for(let k in service) {
-				if(service[k].toString().search("Events") === 0) {
+		const filteredEvents = this.state.users.filter(user => {
+			for(let k in user) {
+				if(user[k].toString().toLowerCase().search("events") === 0) {
 					return true
 				}
 			}
+			return filteredEvents
 		})
 		if(filteredEvents.length > 0) {
 			this.setState({
-				filteredServices: filteredEvents
-			}, () => { console.log(this.state.filteredServices) }) 
+				filteredUsers: filteredEvents
+			}, () => { console.log(this.state.filteredUsers) }) 
 		} else {
 			this.setState({
 				message: true
-			}, () => { console.log(this.state.filteredServices) })
+			}, () => { console.log(this.state.filteredUsers) })
 		}
 	}
 
 	render() {
 			return (
 				<div>
-					{this.state.filteredServices ?
-						this.state.filteredServices.map((result, i) => 
+					{this.state.filteredUsers ?
+						this.state.filteredUsers.map((result, i) => 
 						<div onClick={() => {this.toProfile(result._id)}} key={i} style={{border: "5px black solid"}}>
 							<div>{result.serviceType}</div>
 							<div>{result.service}</div>
-							<div>{result.swapper.firstName} {result.swapper.lastName}</div>
-							<div>${result.minCost} - ${result.maxCost}</div>
-							<div>{result.swapper.businessName}</div>
-							<div>{result.swapper.city}, {result.swapper.state}</div>
+							<div>{result.firstName} {result.lastName}</div>
+							<div>${result.cost}</div>
+							<div>{result.businessName}</div>
+							<div>{result.city}, {result.state}</div>
 						</div>
 						)
 					:

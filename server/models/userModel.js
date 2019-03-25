@@ -14,6 +14,12 @@ const userSchema = new Schema({
         required: true,
         type: String
     },
+    businessName: String,
+    serviceName: String,
+    serviceDescription: String,
+    service: String,
+    serviceType: String,
+    cost: Number,
     services: [
         {
             type: [Schema.Types.ObjectId],
