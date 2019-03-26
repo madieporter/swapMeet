@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {withServices} from './ServiceProvider'
 import EditButton from './images/edit.png'
 import SaveButton from './images/save.png'
+import cashMonay from "./images/cashMonay.png";
 import './UserProfile.css'
 
 
@@ -102,7 +103,8 @@ class UserProfile extends Component {
     render() {
         let { firstName, lastName, username, city, state, email, phoneNumber, profileImage, swapBucks, edit, cost, service, serviceType, serviceDescription, businessName} = this.state
         return (
-            <div className='userProfileBackground'>
+            <div className="profileContainer">
+                <div className='userProfileBackground'>
                 {this.props.token && this.props.match.params.username === this.props.user.username ?
                     <>
                         {edit ?
@@ -194,40 +196,58 @@ class UserProfile extends Component {
                                 <img onClick={this.handleSubmit} src={SaveButton} className='saveButton' alt=""/> 
                             </form>
                         :
-                            <>
-                                <div>Username: {username}</div>
-                                <div>SwapBucks: {swapBucks}</div>
-                                <img  className='profileImage' src={profileImage} alt=""/>
-                                <div>Name: {firstName} {lastName}</div>
-                                <div>Location: {city}, {state}</div>
-                                <div>{email}</div>
-                                <div>{phoneNumber}</div>
-                                <div>{cost}</div>
-                                <div>{service}</div>
-                                <div>{serviceType}</div>
-                                <div>{businessName}</div>
-                                <div>{serviceDescription}</div>
+                            <div className="profileContainer">
+                                <div className="profileStarter">
+                                    <img  className='profileImage' src={profileImage} alt=""/>
+                                    <div className="profileSwapperName">SWAPPER NAME: {username}</div>
+                                    <div  className="profileBucks">
+                                        <img className="cashMonay" src={cashMonay} alt=""/>
+                                        <div>Swap Bucks: ${swapBucks}</div>
+                                    </div>
+                                </div>
+                                <div className="profileInfo">
+                                    <div className="profileBisName">{businessName}</div>
+                                    <div className="profileName">{firstName} {lastName}</div>
+                                    <div className="profileService">{service}</div>
+                                    <div className="profileCost">Service Cost: ${cost}</div>
+                                    <div className="profileServiceDescription">{serviceDescription}</div><br></br>
+                                    <div className="profileContact">
+                                        <div className="profileContactTitle">Contact:</div>
+                                        <div className="profileLocation">Location: {city}, {state}</div>
+                                        <div>Phone Number: {phoneNumber}</div>
+                                        <div>{email}</div>
+                                    </div>
+                                    <button className="profileHireBtn">Hire Me!</button>
+                                </div>
                                 <img className='editButton' onClick={this.toggleEdit} src={EditButton} alt=""/>
-                            </>
+                            </div>
                         }
                     </>
                 :
                     <>
-                        <div>Swapper Name: {username}</div>
-                        <div>SwapBucks: {swapBucks}</div>
-                        <img  className='profileImage' src={profileImage} alt=""/>
-                        <div>Name: {firstName} {lastName}</div>
-                        <div>Location: {city}, {state}</div>
-                        <div>{email}</div>
-                        <div>{phoneNumber}</div>
-                        <div>{cost}</div>
-                        <div>{service}</div>
-                        <div>{serviceType}</div>
-                        <div>{businessName}</div>
-                        <div>{serviceDescription}</div>
-                        <button onClick={this.hireSwapper}>Hire Me!</button>
+                        <div className="profileContainer">
+                            <div className="profileStarter">
+                                <img  className='profileImage' src={profileImage} alt=""/>
+                                <div className="profileSwapperName">SWAPPER NAME: {username}</div>
+                            </div>
+                            <div className="profileInfo">
+                                <div className="profileBisName">{businessName}</div>
+                                <div className="profileName">{firstName} {lastName}</div>
+                                <div className="profileService">{service}</div>
+                                <div className="profileCost">Service Cost: ${cost}</div>
+                                <div className="profileServiceDescription">{serviceDescription}</div><br></br>
+                                <div className="profileContact">
+                                    <div className="profileContactTitle">Contact:</div>
+                                    <div className="profileLocation">Location: {city}, {state}</div>
+                                    <div>Phone Number: {phoneNumber}</div>
+                                    <div>{email}</div>
+                                </div>
+                                <button className="profileHireBtn">Hire Me!</button>
+                            </div>
+                        </div>
                     </>
                 }
+            </div>
             </div>
         );
     }
