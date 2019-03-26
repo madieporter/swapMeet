@@ -40,14 +40,14 @@ class ResidentialAndCommercial extends React.Component {
 				<div className="resAndComercBody">
 					<div className="serviceTitle">Residential & Commercial</div>
 					<div className="serviceContainer" style={{marginTop: "230px"}}>
-						{this.state.filteredServices ?
-							this.state.filteredServices.map((result, i) => 
+						{this.state.filteredUsers ?
+							this.state.filteredUsers.map((result, i) => 
 							<div className="serviceCard" onClick={() => {this.toProfile(result._id)}} key={i}>
-								<div className="serviceBisName">{result.swapper.businessName}</div>
-								<div className="serviceSwapperName">{result.swapper.firstName} {result.swapper.lastName}</div>
+								<div className="serviceBisName">{result.businessName}</div>
+								<div className="serviceSwapperName">{result.firstName} {result.lastName}</div>
 								<div className="serviceService">{result.service}</div>
-								<div className="serviceCost">${result.minCost} - ${result.maxCost}</div>
-								<div className="serviceLocation">{result.swapper.city}, {result.swapper.state}</div>
+								<div className="serviceCost">${result.cost}</div>
+								<div className="serviceLocation">{result.city}, {result.state}</div>
 							</div>
 							)
 						:

@@ -24,6 +24,7 @@ class Auto extends React.Component {
 					return true
 				}
 			}
+			
 			return filteredAuto
 		})
 		if(filteredAuto.length > 0) {
@@ -42,14 +43,14 @@ class Auto extends React.Component {
 				<div className="autoBody">
 					<div className="serviceTitle">auto</div>
 					<div className="serviceContainer">
-						{this.state.filteredServices ?
-							this.state.filteredServices.map((result, i) => 
+						{this.state.filteredUsers ?
+							this.state.filteredUsers.map((result, i) => 
 							<div className="serviceCard" onClick={() => {this.toProfile(result._id)}} key={i}>
-								<div className="serviceBisName">{result.swapper.businessName}</div>
-								<div className="serviceSwapperName">{result.swapper.firstName} {result.swapper.lastName}</div>
+								<div className="serviceBisName">{result.businessName}</div>
+								<div className="serviceSwapperName">{result.firstName} {result.lastName}</div>
 								<div className="serviceService">{result.service}</div>
-								<div className="serviceCost">${result.minCost} - ${result.maxCost}</div>
-								<div className="serviceLocation">{result.swapper.city}, {result.swapper.state}</div>
+								<div className="serviceCost">${result.cost}</div>
+								<div className="serviceLocation">{result.city}, {result.state}</div>
 							</div>
 							)
 						:
