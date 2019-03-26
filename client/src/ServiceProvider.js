@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { withRouter } from 'react-router-dom'
 const { Provider, Consumer } = React.createContext()
 const tokenAxios = axios.create()
 
@@ -49,9 +50,17 @@ class ServiceProvider extends Component {
     }
 
     editUser = (editedUser) => {
-        
+        console.log('here')
         return tokenAxios.put("/api/edituser", editedUser).then(response => {
+            console.log('here')
             return response;
+        })
+    }
+
+    editSwapper = (_id, editedSwapper) => {
+        console.log(editedSwapper)
+        return axios.put(`/users/${_id}`, editedSwapper).then(res => {
+            return res
         })
     }
 
@@ -61,7 +70,8 @@ class ServiceProvider extends Component {
         this.setState({
             user: {},
             token: ''
-        })
+        }, this.props.history.push('/'))
+        
     }
 
     getUsers = () => {
@@ -82,6 +92,7 @@ class ServiceProvider extends Component {
                 signup: this.signup,
                 editUser: this.editUser,
                 getUsers: this.getUsers,
+                editSwapper: this.editSwapper,
                 ...this.state
             }}>
                 {this.props.children}
@@ -91,7 +102,7 @@ class ServiceProvider extends Component {
     }
 }
 
-export default ServiceProvider;
+export default withRouter(ServiceProvider);
 
 export function withServices (C) {
     return props => <Consumer>

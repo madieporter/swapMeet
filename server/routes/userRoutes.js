@@ -18,13 +18,24 @@ userRoute.route('/:_id')
 
             .get((req, res) => {
                 const {_id} = req.params;
-                Service.findById(
+                User.findById(
                     {_id},
                     (err, service) => {
                         if(err) return res.status(500).send(err)
                         return res.status(200).send(service)
                     }
                 )
+            })
+
+            .put((req, res) => {
+                try{
+            
+                    let user = User.findOneAndUpdate({_id: req.params._id}, req.body)
+                    if(user) res.status(200).send(user)
+                }
+                catch (err){
+                    return next(err)
+                }
             })
 
 

@@ -10,12 +10,24 @@ import login from "./images/login.png";
 class NavBar extends Component {
   
     toLogin = () => {
-        if(this.props.token){
-            this.props.history.push(`/userprofile/${this.props.user.username}`)
-        }else{
-            this.props.history.push(`/login`)
-        }
+        this.props.history.push(`/login`)
     }
+    
+    toProfile = () => {
+        this.props.history.push(`/userprofile/${this.props.user.username}`)
+
+    }
+
+    // logout = () => {
+    //     localStorage.removeItem('user')
+    //     localStorage.removeItem('token')
+    //     console.log(this.props)
+    //     // this.props.setState({
+    //     //     user: {},
+    //     //     token: ''
+    //     // })
+    //     this.props.history.push('/')
+    // }
 
     toHome = () => {
         this.props.history.push(`/`)
@@ -27,10 +39,19 @@ class NavBar extends Component {
                 <nav className="navigation">
                     <DrawerToggleButton click={this.props.drawerClickHandler} />
                     <img className="logo" src={swapmeetLogo} onClick={this.toHome} alt=""/>
-                    <div className="loginOnHome">
-                        <img className="navItems" src={login} alt=""/><br></br>
-                        <div className="loginText">Login | Sign Up</div>
-                    </div>
+                    {this.props.token ?
+                        <div className="loginOnHome">
+                            <img  onClick={this.toProfile} className="navItems" src={login} alt=""/><br></br>
+                            <div  onClick={this.props.logout} className="loginText">Logout</div>
+                        </div>
+                    :
+                        
+                        <div onClick={this.toLogin} className="loginOnHome">
+                            <img className="navItems" src={login} alt=""/><br></br>
+                            <div className="loginText">Login | Sign Up</div>
+                        </div>
+                    }
+                    
                     
                 </nav>
             </div>
@@ -38,4 +59,4 @@ class NavBar extends Component {
     }
 }
 
-export default NavBar;
+export default withRouter(withServices(NavBar));

@@ -5,7 +5,7 @@ const apiRoute = express.Router();
 
     apiRoute.put('/edituser', async (req, res, next) => {
         try{
-            console.log(req.user)
+            
             let user = await User.findOneAndUpdate({_id: req.user._id}, req.body)
             if(user) res.status(200).send(user)
         }

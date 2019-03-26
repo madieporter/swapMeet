@@ -6,8 +6,8 @@ import './UserProfile.css'
 
 
 class UserProfile extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             users: JSON.parse(localStorage.getItem('users')) || [],
             edit: false,
@@ -25,33 +25,52 @@ class UserProfile extends Component {
             service: '',
             serviceType: '',
             serviceDescription: '',
-            businessName: ''
+            businessName: '',
+            swapBucks: ''
         }
     }
 
     componentDidMount(){
-        console.log(this.props.match.params.username)
         if (this.props.token && this.props.match.params.username === this.props.user.username){
-            let {firstName, lastName, profileImage, email, phoneNumber, city, state, username, password,_id} = this.props.user
-            this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, password,_id})
+            let { cost, service, serviceType, businessName, city, email, firstName, lastName, phoneNumber, username, serviceDescription, state, profileImage, swapBucks  } = this.props.user
+            this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, cost, service, serviceType, businessName, serviceDescription, swapBucks})
         }else if(this.props.match.params.username){
             const currentUser = this.state.users.find(user => user._id === this.props.match.params.username)
-            console.log(currentUser)
-            let { cost, service, serviceType, businessName, city, email, firstName, lastName, phoneNumber, username, serviceDescription, state, profileImage  } = currentUser
-            this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, cost, service, serviceType, businessName, serviceDescription})
+            let { cost, service, serviceType, businessName, city, email, firstName, lastName, phoneNumber, username, serviceDescription, state, profileImage, swapBucks  } = currentUser
+            this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, cost, service, serviceType, businessName, serviceDescription, swapBucks})
         }
         
     }
 
-    componentWillReceiveProps(nextProps){
-        let {firstName, lastName, profileImage, email, phoneNumber, city, state, username, password,_id} = this.props.user
-        this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, password,_id})
+    componentWillReceiveProps(){
+        let { cost, service, serviceType, businessName, city, email, firstName, lastName, phoneNumber, username, serviceDescription, state, profileImage, swapBucks  } = this.props.user
+        this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, cost, service, serviceType, businessName, serviceDescription, swapBucks})
     }
 
     toggleEdit = () => {
         this.setState(prevState => ({
             edit: !prevState.edit
         }))
+    }
+
+    hireSwapper = () => {
+        if(this.props.token && this.props.match.params.username !== this.props.user.username){
+            console.log(this.props.user.swapBucks)
+            if(this.props.user.swapBucks > 0){
+                let newSwapBucks = this.props.user.swapBucks - this.state.cost
+                this.props.editUser({swapBucks: newSwapBucks})
+                console.log(newSwapBucks)
+                console.log(this.props.user.swapBucks)
+                newSwapBucks = this.state.swapBucks + this.state.cost
+                this.setState({
+                    swapBucks: newSwapBucks
+                })
+                this.props.editSwapper(this.props.match.params.username, {swapBucks: newSwapBucks})
+                console.log(newSwapBucks)
+                console.log(this.state.swapBucks)
+                alert(`You have paid swapper ${this.state.username}, ${this.state.firstName} ${this.state.lastName}, $${this.state.cost} Swap Bucks. Please contact them at ${this.state.phoneNumber} or email them at ${this.state.email} to get your services.`)
+            }
+        }
     }
 
     handleSubmit = e => {
@@ -64,7 +83,12 @@ class UserProfile extends Component {
             state: this.state.state,
             username: this.state.username,
             password: this.state.password,
-            profileImage: this.state.profileImage
+            profileImage: this.state.profileImage,
+            cost: this.state.cost,
+            service: this.state.service,
+            serviceType: this.state.serviceType,
+            businessName: this.state.businessName,
+            serviceDescription: this.state.serviceDescription
         }
         
         this.props.editUser(editedUser)
@@ -76,77 +100,132 @@ class UserProfile extends Component {
     }
 
     render() {
-        let { firstName, lastName, username, city, state, email, phoneNumber, profileImage, swapBucks} = this.state
+        let { firstName, lastName, username, city, state, email, phoneNumber, profileImage, swapBucks, edit, cost, service, serviceType, serviceDescription, businessName} = this.state
         return (
             <div className='userProfileBackground'>
-                {this.state.edit ?
-                    <form onSubmit={this.handleSubmit} className='editUserForm'>
-                    <input 
-                            type="text" 
-                            value={this.state.firstName} 
-                            placeholder='First Name'
-                            name='firstName'  
-                            onChange={this.handleChange} />
-                        <input 
-                            type="text" 
-                            value={this.state.lastName} 
-                            placeholder='Last Name'
-                            name='lastName'  
-                            onChange={this.handleChange} />
-                        <input 
-                            type="text" 
-                            value={this.state.profileImage} 
-                            placeholder='Profile Image' 
-                            name='profileImage'  
-                            onChange={this.handleChange} />
-                        <input 
-                            type="number" 
-                            value={this.state.phoneNumber} 
-                            placeholder='Phone Number' 
-                            name='phoneNumber' 
-                            onChange={this.handleChange} />
-                        <input 
-                            type="text" 
-                            value={this.state.email} 
-                            placeholder='Email' 
-                            name='email' 
-                            onChange={this.handleChange} />
-                        <input 
-                            type="text" 
-                            value={this.state.city} 
-                            placeholder='City' 
-                            name='city' 
-                            onChange={this.handleChange} />
+                {this.props.token && this.props.match.params.username === this.props.user.username ?
+                    <>
+                        {edit ?
+                            <form onSubmit={this.handleSubmit} className='editUserForm'>
                             <input 
-                            type="text" 
-                            value={this.state.state} 
-                            placeholder='State' 
-                            name='state' 
-                            onChange={this.handleChange} />
-                            <input 
-                            type="text" 
-                            value={this.state.username}
-                            placeholder='Username' 
-                            name='username' 
-                            onChange={this.handleChange} />
-                            <input 
-                            type="text" 
-                            value={this.state.password}
-                            placeholder='Password' 
-                            name='password' 
-                            onChange={this.handleChange} />
-                        <img onClick={this.handleSubmit} src={SaveButton} className='saveButton' alt=""/> 
-                    </form>
+                                    type="text" 
+                                    value={this.state.firstName} 
+                                    placeholder='First Name'
+                                    name='firstName'  
+                                    onChange={this.handleChange} />
+                                <input 
+                                    type="text" 
+                                    value={this.state.lastName} 
+                                    placeholder='Last Name'
+                                    name='lastName'  
+                                    onChange={this.handleChange} />
+                                <input 
+                                    type="text" 
+                                    value={this.state.profileImage} 
+                                    placeholder='Profile Image' 
+                                    name='profileImage'  
+                                    onChange={this.handleChange} />
+                                <input 
+                                    type="number" 
+                                    value={this.state.phoneNumber} 
+                                    placeholder='Phone Number' 
+                                    name='phoneNumber' 
+                                    onChange={this.handleChange} />
+                                <input 
+                                    type="text" 
+                                    value={this.state.email} 
+                                    placeholder='Email' 
+                                    name='email' 
+                                    onChange={this.handleChange} />
+                                <input 
+                                    type="text" 
+                                    value={this.state.city} 
+                                    placeholder='City' 
+                                    name='city' 
+                                    onChange={this.handleChange} />
+                                    <input 
+                                    type="text" 
+                                    value={this.state.state} 
+                                    placeholder='State' 
+                                    name='state' 
+                                    onChange={this.handleChange} />
+                                    <input 
+                                    type="text" 
+                                    value={this.state.username}
+                                    placeholder='Username' 
+                                    name='username' 
+                                    onChange={this.handleChange} />
+                                    <input 
+                                    type="text" 
+                                    value={this.state.password}
+                                    placeholder='Password' 
+                                    name='password' 
+                                    onChange={this.handleChange} />
+                                    <input 
+                                    type="text" 
+                                    value={this.state.cost}
+                                    placeholder='Cost' 
+                                    name='cost' 
+                                    onChange={this.handleChange} />
+                                    <input 
+                                    type="text" 
+                                    value={this.state.service}
+                                    placeholder='Service' 
+                                    name='service' 
+                                    onChange={this.handleChange} />
+                                    <input 
+                                    type="text" 
+                                    value={this.state.serviceType}
+                                    placeholder='Service Type' 
+                                    name='serviceType' 
+                                    onChange={this.handleChange} />
+                                    <input 
+                                    type="text" 
+                                    value={this.state.businessName}
+                                    placeholder='Business Name' 
+                                    name='businessName' 
+                                    onChange={this.handleChange} />
+                                    <input 
+                                    type="text" 
+                                    value={this.state.serviceDescription}
+                                    placeholder='Service Description' 
+                                    name='serviceDescription' 
+                                    onChange={this.handleChange} />
+                                <img onClick={this.handleSubmit} src={SaveButton} className='saveButton' alt=""/> 
+                            </form>
+                        :
+                            <>
+                                <div>Username: {username}</div>
+                                <div>SwapBucks: {swapBucks}</div>
+                                <img  className='profileImage' src={profileImage} alt=""/>
+                                <div>Name: {firstName} {lastName}</div>
+                                <div>Location: {city}, {state}</div>
+                                <div>{email}</div>
+                                <div>{phoneNumber}</div>
+                                <div>{cost}</div>
+                                <div>{service}</div>
+                                <div>{serviceType}</div>
+                                <div>{businessName}</div>
+                                <div>{serviceDescription}</div>
+                                <img className='editButton' onClick={this.toggleEdit} src={EditButton} alt=""/>
+                            </>
+                        }
+                    </>
                 :
                     <>
-                        <div>Username: {username}</div>
+                        <div>Swapper Name: {username}</div>
                         <div>SwapBucks: {swapBucks}</div>
                         <img  className='profileImage' src={profileImage} alt=""/>
                         <div>Name: {firstName} {lastName}</div>
                         <div>Location: {city}, {state}</div>
                         <div>{email}</div>
                         <div>{phoneNumber}</div>
-                        <img className='editButton' onClick={this.toggleEdit} src={EditButton} alt=""/>
+                        <div>{cost}</div>
+                        <div>{service}</div>
+                        <div>{serviceType}</div>
+                        <div>{businessName}</div>
+                        <div>{serviceDescription}</div>
+                        <button onClick={this.hireSwapper}>Hire Me!</button>
                     </>
                 }
             </div>
