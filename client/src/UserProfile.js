@@ -175,20 +175,31 @@ class UserProfile extends Component {
                                 <img onClick={this.handleSubmit} src={SaveButton} className='saveButton' alt=""/> 
                             </form>
                         :
-                            <>
-                                <img  className='profileImage' src={profileImage} alt=""/>
-                                <div>{businessName}</div>
-                                <div>Name: {firstName} {lastName}</div>
-                                <div>Username: {username}</div>
-                                <div>{serviceType}</div>
-                                <div>SwapBucks: {swapBucks}</div>
-                                <div>Location: {city}, {state}</div>
-                                <div>{service}</div>
-                                <div>{cost}</div>
-                                <div>{serviceDescription}</div>
-                                <div>{phoneNumber}</div>
-                                <div>{email}</div>
-                            </>
+                            <div className="profileContainer">
+                                <div className="profileStarter">
+                                    <img  className='profileImage' src={profileImage} alt=""/>
+                                    <div className="profileSwapperName">SWAPPER NAME: {username}</div>
+                                    <div  className="profileBucks">
+                                        <img className="cashMonay" src={cashMonay} alt=""/>
+                                        <div>Swap Bucks: ${swapBucks}</div>
+                                    </div>
+                                </div>
+                                <div className="profileInfo">
+                                    <div className="profileBisName">{businessName}</div>
+                                    <div className="profileName">{firstName} {lastName}</div>
+                                    <div className="profileService">{service}</div>
+                                    <div className="profileCost">Service Cost: ${cost}</div>
+                                    <div className="profileServiceDescription">{serviceDescription}</div><br></br>
+                                    <div className="profileContact">
+                                        <div className="profileContactTitle">Contact:</div>
+                                        <div className="profileLocation">Location: {city}, {state}</div>
+                                        <div>Phone Number: {phoneNumber}</div>
+                                        <div>{email}</div>
+                                    </div>
+                                    <button className="profileHireBtn">Hire Me!</button>
+                                </div>
+                                <img className='editButton' onClick={this.toggleEdit} src={EditButton} alt=""/>
+                            </div>
                         }
                     </>
                 :
@@ -197,10 +208,6 @@ class UserProfile extends Component {
                             <div className="profileStarter">
                                 <img  className='profileImage' src={profileImage} alt=""/>
                                 <div className="profileSwapperName">SWAPPER NAME: {username}</div>
-                                <div  className="profileBucks">
-                                    <img className="cashMonay" src={cashMonay} alt=""/>
-                                    <div>Swap Bucks: ${swapBucks}</div>
-                                </div>
                             </div>
                             <div className="profileInfo">
                                 <div className="profileBisName">{businessName}</div>
@@ -216,7 +223,6 @@ class UserProfile extends Component {
                                 </div>
                                 <button className="profileHireBtn">Hire Me!</button>
                             </div>
-                            <img className='editButton' onClick={this.toggleEdit} src={EditButton} alt=""/>
                         </div>
                     </>
                 }
