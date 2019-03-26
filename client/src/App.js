@@ -52,7 +52,7 @@ class App extends Component {
     return (
       <div>
         <NavBar drawerClickHandler={this.drawerToggleClickHandler}/>
-        <SideDrawer show={this.state.sideDrawerOpen} />
+        <SideDrawer show={this.state.sideDrawerOpen} drawerClickHandler={this.drawerToggleClickHandler}/>
         {backdrop}
 
        <Switch>

@@ -27,11 +27,11 @@ class Crafts extends React.Component {
 		if(filteredCrafts.length > 0) {
 			this.setState({
 				filteredUsers: filteredCrafts
-			}, () => { console.log(this.state.filteredUsers) }) 
+			}) 
 		} else {
 			this.setState({
 				message: true
-			}, () => { console.log(this.state.filteredUsers) })
+			})
 		}
 	}
 

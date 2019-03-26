@@ -17,7 +17,6 @@ class Education extends React.Component {
 
 	componentDidMount() {
 		const filteredEducation = this.state.users.filter(user => {
-			console.log(user)
 			for(let k in user) {
 				if(user[k].toString().toLowerCase().search("education") === 0) {
 					return true

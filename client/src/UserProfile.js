@@ -26,31 +26,52 @@ class UserProfile extends Component {
             service: '',
             serviceType: '',
             serviceDescription: '',
-            businessName: ''
+            businessName: '',
+            swapBucks: ''
         }
     }
 
     componentDidMount(){
         if (this.props.token && this.props.match.params.username === this.props.user.username){
-            let { cost, service, serviceType, businessName, city, email, firstName, lastName, phoneNumber, username, serviceDescription, state, profileImage  } = this.props.user
-            this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, cost, service, serviceType, businessName, serviceDescription})
+            let { cost, service, serviceType, businessName, city, email, firstName, lastName, phoneNumber, username, serviceDescription, state, profileImage, swapBucks  } = this.props.user
+            this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, cost, service, serviceType, businessName, serviceDescription, swapBucks})
         }else if(this.props.match.params.username){
             const currentUser = this.state.users.find(user => user._id === this.props.match.params.username)
-            let { cost, service, serviceType, businessName, city, email, firstName, lastName, phoneNumber, username, serviceDescription, state, profileImage  } = currentUser
-            this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, cost, service, serviceType, businessName, serviceDescription})
+            let { cost, service, serviceType, businessName, city, email, firstName, lastName, phoneNumber, username, serviceDescription, state, profileImage, swapBucks  } = currentUser
+            this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, cost, service, serviceType, businessName, serviceDescription, swapBucks})
         }
         
     }
 
     componentWillReceiveProps(){
-        let { cost, service, serviceType, businessName, city, email, firstName, lastName, phoneNumber, username, serviceDescription, state, profileImage  } = this.props.user
-        this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, cost, service, serviceType, businessName, serviceDescription})
+        let { cost, service, serviceType, businessName, city, email, firstName, lastName, phoneNumber, username, serviceDescription, state, profileImage, swapBucks  } = this.props.user
+        this.setState({firstName, lastName, profileImage, email, phoneNumber, city, state, username, cost, service, serviceType, businessName, serviceDescription, swapBucks})
     }
 
     toggleEdit = () => {
         this.setState(prevState => ({
             edit: !prevState.edit
         }))
+    }
+
+    hireSwapper = () => {
+        if(this.props.token && this.props.match.params.username !== this.props.user.username){
+            console.log(this.props.user.swapBucks)
+            if(this.props.user.swapBucks > 0){
+                let newSwapBucks = this.props.user.swapBucks - this.state.cost
+                this.props.editUser({swapBucks: newSwapBucks})
+                console.log(newSwapBucks)
+                console.log(this.props.user.swapBucks)
+                newSwapBucks = this.state.swapBucks + this.state.cost
+                this.setState({
+                    swapBucks: newSwapBucks
+                })
+                this.props.editSwapper(this.props.match.params.username, {swapBucks: newSwapBucks})
+                console.log(newSwapBucks)
+                console.log(this.state.swapBucks)
+                alert(`You have paid swapper ${this.state.username}, ${this.state.firstName} ${this.state.lastName}, $${this.state.cost} Swap Bucks. Please contact them at ${this.state.phoneNumber} or email them at ${this.state.email} to get your services.`)
+            }
+        }
     }
 
     handleSubmit = e => {
@@ -204,7 +225,7 @@ class UserProfile extends Component {
                     </>
                 :
                     <>
-                        <div className="profileContainer">
+                <div className="profileContainer">
                             <div className="profileStarter">
                                 <img  className='profileImage' src={profileImage} alt=""/>
                                 <div className="profileSwapperName">SWAPPER NAME: {username}</div>
