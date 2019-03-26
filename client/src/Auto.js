@@ -24,6 +24,7 @@ class Auto extends React.Component {
 					return true
 				}
 			}
+			
 			return filteredAuto
 		})
 		if(filteredAuto.length > 0) {
