@@ -8,31 +8,48 @@ class Login extends Component {
         super()
         this.state = {
             login: true,
-            firstName: '',
-            lastName: '',
-            profileImage: '',
-            username: '',
-            password: '',
-            phoneNumber: '',
-            email: '',
-            city: '',
-            state: ''
+            user: {
+                firstName: '',
+                lastName: '',
+                profileImage: '',
+                username: '',
+                password: '',
+                phoneNumber: '',
+                email: '',
+                city: '',
+                state: '',
+                service: '',
+                serviceType: '',
+                serviceDescription: '',
+                businessName: '',
+                cost: ''
+            }
         }
     }
 
     handleChange = e => {
-        this.setState({[e.target.name]: e.target.value})
+        let {name, value} = e.target
+        this.setState(prevState => {
+            return {
+                user: {
+                    ...prevState.user,
+                    [name]: value
+                }
+            }
+        })
     }
 
 
     handleSubmit = e => {
         e.preventDefault()
         if(this.state.login){
-            const userInfo = {username: this.state.username, password: this.state.password}
-            this.props.login(userInfo).then(() => this.props.history.push(`/userprofile/${this.state.username}`))
+            const userInfo = {username: this.state.user.username, password: this.state.user.password}
+            this.props.login(userInfo).then(() => this.props.history.push(`/userprofile/${this.state.user.username}`))
             
         }else{
-            this.props.signup(this.state).then(() => this.props.history.push(`/userprofile/${this.state.username}`))
+            const userInfo = this.state.user
+            console.log(userInfo)
+            this.props.signup(userInfo).then(() => this.props.history.push(`/userprofile/${this.state.user.username}`))
         }
 
     }
@@ -46,22 +63,20 @@ class Login extends Component {
 
     render() {
         return (
-            <>
+            <div className='loginBackground'>
                 {this.state.login ? 
                     <div className='loginForm'>
                         <form className='form' onSubmit={this.handleSubmit}>
-                            <label>Username:</label>
                             <input type="text"
                             placeholder="Username:"
                             name="username"
-                            value={this.state.name}
-                            onChange={this.handleChange} />
-                            <label>Password:</label>
-                            <input type="text"
+                            value={this.state.user.name}
+                            onChange={this.handleChange} required/>
+                            <input type="password"
                             placeholder="Password:"
                             name="password"
-                            value={this.state.name}
-                            onChange={this.handleChange} />
+                            value={this.state.user.name}
+                            onChange={this.handleChange} required/>
                             <button className='submitButton'>Submit</button>
                         </form>
                         <br/>
@@ -77,85 +92,103 @@ class Login extends Component {
 
                     <div className='signUpForm'>
                         <form className='form' onSubmit={this.handleSubmit}>
-                            <label>First Name:</label>
                             <input 
                             className='signUpInputs' 
                             type="text"
                             placeholder="First Name"
                             name="firstName"
-                            value={this.state.name}
+                            value={this.state.user.name}
                             onChange={this.handleChange} />
-                            <label>Last Name:</label>
                             <input 
                             className='signUpInputs' 
                             type="text"
                             placeholder="Last Name"
                             name="lastName"
-                            value={this.state.name}
+                            value={this.state.user.name}
                             onChange={this.handleChange} />
-                            <label>Profile Image URL:</label>
                             <input 
                             className='signUpInputs' 
                             type="text"
                             placeholder="Profile Image Url"
                             name="profileImage"
-                            value={this.state.name}
+                            value={this.state.user.name}
                             onChange={this.handleChange} />
-                            <label>Phone Number:</label>
                             <input 
                             className='signUpInputs' 
                             type="number"
                             placeholder="Phone Number"
                             name="phoneNumber"
-                            value={this.state.name}
+                            value={this.state.user.name}
                             onChange={this.handleChange} />
-                            <label>Email:</label>
                             <input 
                             className='signUpInputs' 
                             type="email"
                             placeholder="youremailhere@swapper.com"
                             name="email"
-                            value={this.state.name}
+                            value={this.state.user.name}
                             onChange={this.handleChange} />
-                            <label>City:</label>
                             <input 
                             className='signUpInputs' 
                             type="text"
                             placeholder="City"
                             name="city"
-                            value={this.state.name}
+                            value={this.state.user.name}
                             onChange={this.handleChange} />
-                            <label>State:</label>
                             <input 
                             className='signUpInputs' 
                             type="text"
                             placeholder="State"
                             name="state"
-                            value={this.state.name}
+                            value={this.state.user.name}
                             onChange={this.handleChange} />
-                            {/* <label>Services:</label>
-                            <input 
-                            className='signUpInputs' 
-                            type="text"
-                            placeholder="First Name"
-                            name="firstName"
-                            value={this.state.name}
-                            onChange={this.handleChange} /> */}
-                            <label>Username:</label>
                             <input 
                             className='signUpInputs' 
                             type="text"
                             placeholder="Username"
                             name="username"
-                            value={this.state.name}
+                            value={this.state.user.name}
                             onChange={this.handleChange} />
-                            <label>Password:</label>
                             <input 
                             className='signUpInputs' 
                             type="text"
                             placeholder="Password"
                             name="password"
-                            value={this.state.name}
+                            value={this.state.user.name}
+                            onChange={this.handleChange} />
+                            <input 
+                            className='signUpInputs' 
+                            type="text"
+                            placeholder="Business Name"
+                            name="businessName"
+                            value={this.state.user.name}
+                            onChange={this.handleChange} />
+                            <input 
+                            className='signUpInputs' 
+                            type="text"
+                            placeholder="Service"
+                            name="service"
+                            value={this.state.user.name}
+                            onChange={this.handleChange} />
+                            <input 
+                            className='signUpInputs' 
+                            type="text"
+                            placeholder="Service Type"
+                            name="serviceType"
+                            value={this.state.user.name}
+                            onChange={this.handleChange} />
+                            <textarea 
+                            className='signUpInputs' 
+                            type="text"
+                            placeholder="Service Description"
+                            name="serviceDescription"
+                            value={this.state.user.name}
+                            onChange={this.handleChange} />
+                            <input 
+                            className='signUpInputs' 
+                            type="number"
+                            placeholder="Cost"
+                            name="cost"
+                            value={this.state.user.name}
                             onChange={this.handleChange} />
                             <button className='submitButton'>Submit</button>
                         </form>
@@ -165,12 +198,8 @@ class Login extends Component {
                         </form>
                     </div>
                 }
-                {/* {this.props.token ?
-                    <div>You are now logged in</div>
-                :
-                    null
-                } */}
-            </>
+
+            </div>
         );
     }
 }

@@ -37,7 +37,9 @@ class Wellness extends React.Component {
 	render() {
 			return (
 				<div className="wellnessBody">
-					<div className="serviceTitle">wellness</div>
+					<div className='wellnessTitleContainer'>
+						<div className="serviceTitle">wellness</div>
+					</div>
 					<div className="serviceContainer">
 						{this.state.filteredUsers ?
 							this.state.filteredUsers.map((result, i) => 

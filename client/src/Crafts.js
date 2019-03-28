@@ -38,7 +38,9 @@ class Crafts extends React.Component {
 	render() {
 			return (
 				<div className="craftsBody">
-					<div className="serviceTitle">crafts</div>
+					<div className='craftsTitleContainer'>
+						<div className="serviceTitle">crafts</div>
+					</div>
 					<div className="serviceContainer">
 						{this.state.filteredUsers ?
 							this.state.filteredUsers.map((result, i) => 

@@ -50,12 +50,12 @@ class App extends Component {
     }
     
     return (
-      <div>
+      <div style={{minHeight: '80vh' }}>
         <NavBar drawerClickHandler={this.drawerToggleClickHandler}/>
         <SideDrawer show={this.state.sideDrawerOpen} drawerClickHandler={this.drawerToggleClickHandler}/>
         {backdrop}
 
-       <Switch>
+       <Switch >
           <Route exact path = "/" component={Home}/>
           <Route path="/auto" component={Auto} />
           <Route path="/crafts" component={Crafts}/>

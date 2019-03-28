@@ -1,7 +1,6 @@
 import React from "react";
 import { withServices } from './ServiceProvider';
-
-import auto from "./ServiceComponents.css"
+import "./ServiceComponents.css"
 
 class Auto extends React.Component {
 	constructor() {
@@ -41,7 +40,9 @@ class Auto extends React.Component {
 	render() {
 			return (
 				<div className="autoBody">
-					<div className="serviceTitle">auto</div>
+					<div className='autoTitleContainer'>
+						<div className="serviceTitle">auto</div>
+					</div>
 					<div className="serviceContainer">
 						{this.state.filteredUsers ?
 							this.state.filteredUsers.map((result, i) => 

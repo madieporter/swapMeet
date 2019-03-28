@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DrawerToggleButton from "./DrawerToggleButton.js";
+import "./DrawerToggleButton.css";
 import {withServices} from './ServiceProvider'
 import { withRouter } from 'react-router-dom'
 
@@ -18,43 +18,40 @@ class NavBar extends Component {
 
     }
 
-    // logout = () => {
-    //     localStorage.removeItem('user')
-    //     localStorage.removeItem('token')
-    //     console.log(this.props)
-    //     // this.props.setState({
-    //     //     user: {},
-    //     //     token: ''
-    //     // })
-    //     this.props.history.push('/')
-    // }
-
     toHome = () => {
         this.props.history.push(`/`)
     }
 
     render() {
+        console.log(this.props)
         return (
-            <div>
+            <>
                 <nav className="navigation">
-                    <DrawerToggleButton click={this.props.drawerClickHandler} />
+                    <button className="toggleBtn" onClick={this.props.drawerClickHandler}>
+                        <div className="toggleBtnLine"></div>
+                        <div className="toggleBtnLine"></div>
+                        <div className="toggleBtnLine"></div>
+                    </button>
                     <img className="logo" src={swapmeetLogo} onClick={this.toHome} alt=""/>
                     {this.props.token ?
-                        <div className="loginOnHome">
-                            <img  onClick={this.toProfile} className="navItems" src={login} alt=""/><br></br>
-                            <div  onClick={this.props.logout} className="loginText">Logout</div>
+                        <div className='navLoginContainer'>
+                            <div className="loginOnHome">
+                                <img  onClick={this.toProfile} className="navItems" src={login} alt=""/>
+                                <div  onClick={this.props.logout} className="loginText">Logout</div>
+                            </div>
                         </div>
                     :
-                        
-                        <div onClick={this.toLogin} className="loginOnHome">
-                            <img className="navItems" src={login} alt=""/><br></br>
-                            <div className="loginText">Login | Sign Up</div>
+                        <div className='navLoginContainer'>
+                            <div onClick={this.toLogin} className="loginOnHome">
+                                <img className="navItems" src={login} alt=""/>
+                                <div className="loginText">Login | Sign Up</div>
+                            </div>
                         </div>
                     }
                     
                     
                 </nav>
-            </div>
+            </>
         );
     }
 }

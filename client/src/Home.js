@@ -8,7 +8,6 @@ import "./App.css";
 import "./DisplayServices.css";
 
 import sorry from "./images/sorry.png";
-import homeBack from "./images/homeBack.jpeg";
 
 
 
@@ -63,16 +62,18 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="homeBack">
-                <form className='here' onSubmit={this.handleSubmit}>
-                    <input className="homeSearchBar"
-                    type="text"
-                    placeholder="Search for Swappers"
-                    name="input"
-                    value={this.state.name}
-                    onChange={this.handleChange}/><br></br>
-                    <button className="homeSearchButton">SEARCH</button>
-                </form>
+            <>
+                <div className="homeBack">
+                    <form className='homeSearchForm' onSubmit={this.handleSubmit}>
+                        <input className="homeSearchBar"
+                        type="text"
+                        placeholder="Search for Swappers"
+                        name="input"
+                        value={this.state.name}
+                        onChange={this.handleChange}/><br></br>
+                        <button className="homeSearchButton">SEARCH</button>
+                    </form>
+                </div>
                 {this.state.searched ?
                     <div>
                         { this.state.message ? 
@@ -84,14 +85,14 @@ class Home extends Component {
                             </div> 
                         :
                             <div className="gridContainer">
-                                {this.state.filteredServices.map((result, i) => <DisplayServices key={i} result={result} />)}
+                                {this.state.filteredUsers.map((result, i) => <DisplayServices key={i} result={result} />)}
                             </div>
                         }
                         </div>
                 :
                     null
                 }
-            </div>
+            </>
         )
     }
 }
