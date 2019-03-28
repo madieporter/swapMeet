@@ -38,8 +38,10 @@ class ResidentialAndCommercial extends React.Component {
 	render() {
 			return (
 				<div className="resAndComercBody">
-					<div className="serviceTitle">Residential & Commercial</div>
-					<div className="serviceContainer" style={{marginTop: "230px"}}>
+					<div className='RACTitleContainer'>
+						<div className="serviceTitle">Residential & Commercial</div>
+					</div>
+					<div className="serviceContainer">
 						{this.state.filteredUsers ?
 							this.state.filteredUsers.map((result, i) => 
 							<div className="serviceCard" onClick={() => {this.toProfile(result._id)}} key={i}>

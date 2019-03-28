@@ -38,7 +38,9 @@ class Events extends React.Component {
 	render() {
 			return (
 				<div className="eventsBody">
-					<div className="serviceTitle">event coordination</div>
+					<div className='eventsTitleContainer'>
+						<div className="serviceTitle">event coordination</div>
+					</div>
 					<div className="serviceContainer">
 						{this.state.filteredUsers ?
 							this.state.filteredUsers.map((result, i) => 

@@ -38,7 +38,9 @@ class Education extends React.Component {
 	render() {
 			return (
 				<div className="educationBody">
-					<div className="serviceTitle">education</div>
+					<div className='educationTitleContainer'>
+						<div className="serviceTitle">education</div>
+					</div>
 					<div className="serviceContainer">
 						{this.state.filteredUsers ?
 							this.state.filteredUsers.map((result, i) => 

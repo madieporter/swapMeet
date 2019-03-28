@@ -41,7 +41,7 @@ class DisplayServices extends Component {
 
     return (
       <>
-        <div className="searchCard" onClick={this.toProfile}>
+        <div className="serviceCard" onClick={this.toProfile}>
           <div className="serviceType">{service}</div><br></br>
           <img src={img} alt=""/>
           <div className="bisName">{businessName}</div>

@@ -27,15 +27,19 @@ userRoute.route('/:_id')
                 )
             })
 
-            .put((req, res) => {
-                try{
-            
-                    let user = User.findOneAndUpdate({_id: req.params._id}, req.body)
-                    if(user) res.status(200).send(user)
-                }
-                catch (err){
-                    return next(err)
-                }
+            .put((req, res, next) => {
+                User.findOneAndUpdate(
+                    {_id: req.params._id}, 
+                    req.body, 
+                    { new: true },
+                    (err, user) => {
+                        if(err){
+                            console.log('Error')
+                            res.status(500)
+                            return next(err)
+                        }
+                        return res.send(user)
+                    })
             })
 
 
